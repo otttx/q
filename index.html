@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0d7a68">
+<title>مِران | منصة التطبيقات العملية</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230d7a68'/%3E%3Ctext x='32' y='45' font-size='36' text-anchor='middle' fill='white' font-family='Tahoma'%3E%D9%85%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#f2f5f7; --surface:#ffffff; --surface2:#f7f9fa; --line:#e1e7ec; --line2:#cfd8df;
+  --text:#132029; --muted:#5d6c78; --faint:#8a97a2;
+  --pri:#0d7a68; --pri-h:#0a6556; --pri-ink:#ffffff; --pri-soft:#e1f2ee; --pri-line:#a9dccf;
+  --danger:#c0392b; --danger-soft:#fdecea; --warn:#9a5b00; --warn-soft:#fff2dc; --ok:#1c7d45; --ok-soft:#e5f4ea; --info:#2c5cad; --info-soft:#e7eefa;
+  --r:14px; --r-sm:10px; --sh:0 1px 2px rgba(16,24,40,.05),0 8px 24px rgba(16,24,40,.06);
+  --font:'IBM Plex Sans Arabic','Segoe UI',Tahoma,system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1216; --surface:#151d23; --surface2:#1a242b; --line:#26323b; --line2:#33424d;
+    --text:#e5ebf0; --muted:#9aa8b3; --faint:#73818c;
+    --pri:#35b59d; --pri-h:#48c4ad; --pri-ink:#04201b; --pri-soft:#10342e; --pri-line:#1e5a4e;
+    --danger:#ee7366; --danger-soft:#3b1f1c; --warn:#f0a845; --warn-soft:#3a2b14; --ok:#52c48c; --ok-soft:#143222; --info:#7ea9f2; --info-soft:#17263e;
+    --sh:0 1px 2px rgba(0,0,0,.3);
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:16px;line-height:1.75;-webkit-text-size-adjust:100%;min-height:100vh}
+button,input,textarea,select{font:inherit;color:inherit}
+a{color:var(--pri)}
+h1,h2,h3{line-height:1.4;margin:0 0 .5em}
+h1{font-size:1.5rem} h2{font-size:1.2rem} h3{font-size:1.05rem}
+p{margin:.4em 0}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+.wrap.wide{max-width:1120px}
+.muted{color:var(--muted)} .small{font-size:.875rem} .center{text-align:center}
+.mt{margin-top:12px} .mt2{margin-top:20px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row.between{justify-content:space-between}
+.grow{flex:1;min-width:140px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--sh)}
+.card + .card{margin-top:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:8px 16px;border-radius:var(--r-sm);border:1px solid var(--line2);background:var(--surface);color:var(--text);font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s,border-color .15s;white-space:nowrap}
+.btn:hover{background:var(--surface2)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.pri{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
+.btn.pri:hover{background:var(--pri-h)}
+.btn.danger{background:var(--danger);border-color:var(--danger);color:#fff}
+.btn.soft-danger{color:var(--danger);border-color:var(--danger);background:transparent}
+.btn.ghost{background:transparent}
+.btn.sm{min-height:36px;padding:4px 12px;font-size:.9rem}
+.btn.lg{min-height:54px;font-size:1.05rem}
+.btn.block{width:100%}
+.btn.link{border:0;background:none;padding:2px 4px;min-height:0;color:var(--pri);text-decoration:underline}
+.field{display:block;margin-top:12px}
+.field > span{display:block;font-weight:600;font-size:.92rem;margin-bottom:6px}
+.input,.textarea,.select{width:100%;border:1px solid var(--line2);background:var(--surface);border-radius:var(--r-sm);padding:10px 12px;min-height:44px;outline:none}
+.input:focus,.textarea:focus,.select:focus{border-color:var(--pri);box-shadow:0 0 0 3px var(--pri-soft)}
+.textarea{min-height:110px;resize:vertical;line-height:1.8}
+.check{display:flex;gap:10px;align-items:flex-start;margin-top:10px;cursor:pointer}
+.check input{width:20px;height:20px;margin-top:4px;accent-color:var(--pri);flex:none}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;font-size:.8rem;font-weight:600;background:var(--surface2);border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.chip.ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.chip.warn{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.chip.danger{background:var(--danger-soft);color:var(--danger);border-color:transparent}
+.chip.info{background:var(--info-soft);color:var(--info);border-color:transparent}
+.chip.pri{background:var(--pri-soft);color:var(--pri);border-color:transparent}
+.live-dot{width:8px;height:8px;border-radius:50%;background:currentColor;animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.notice{border-radius:var(--r-sm);padding:12px 14px;background:var(--info-soft);border:1px solid transparent}
+.notice.warn{background:var(--warn-soft)} .notice.danger{background:var(--danger-soft)} .notice.ok{background:var(--ok-soft)}
+.notice ul{margin:6px 0 0;padding-inline-start:20px}
+.demo-bar{background:var(--warn-soft);color:var(--warn);font-size:.86rem;padding:6px 16px;text-align:center;font-weight:600}
+.demo-bar .btn{min-height:28px;padding:0 10px;font-size:.8rem;margin-inline-start:8px}
+.brand{display:flex;align-items:center;gap:10px}
+.logo{width:40px;height:40px;border-radius:12px;background:var(--pri);color:var(--pri-ink);display:grid;place-items:center;font-weight:700;font-size:1.35rem;flex:none}
+.brand b{font-size:1.2rem;display:block;line-height:1.2}
+.brand small{color:var(--muted);font-size:.8rem}
+.hero{padding:30px 0 6px;text-align:center}
+.hero .logo{width:66px;height:66px;font-size:2.1rem;border-radius:20px;margin:0 auto 10px}
+.hero h1{font-size:1.9rem;margin:0}
+.pin-input{width:100%;max-width:340px;display:block;margin:12px auto 0;text-align:center;font-size:2.1rem;letter-spacing:.35em;padding:10px 0 10px .35em;font-weight:700;border:2px solid var(--line2);border-radius:16px;background:var(--surface);outline:none;font-variant-numeric:tabular-nums;direction:ltr}
+.pin-input:focus{border-color:var(--pri);box-shadow:0 0 0 4px var(--pri-soft)}
+.pin-err{color:var(--danger);text-align:center;min-height:1.7em;margin-top:6px;font-weight:600}
+.foot{text-align:center;color:var(--faint);font-size:.8rem;padding:26px 0 18px}
+.foot .btn{color:var(--muted)}
+.mine{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:start;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--surface);cursor:pointer;margin-top:8px}
+.name-list{max-height:46vh;overflow:auto;border:1px solid var(--line);border-radius:var(--r-sm);margin-top:8px}
+.name-item{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:start;padding:12px 14px;border:0;border-bottom:1px solid var(--line);background:var(--surface);cursor:pointer;font-weight:500;min-height:48px}
+.name-item:last-child{border-bottom:0}
+.name-item.sel{background:var(--pri-soft);color:var(--pri);font-weight:700}
+.name-item[disabled]{color:var(--faint);cursor:not-allowed;background:var(--surface2)}
+.qtop{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+@supports (backdrop-filter:blur(4px)){.qtop{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px)}}
+.qtop-in{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 16px;max-width:760px;margin:0 auto}
+.qtop-title{font-weight:700;font-size:.95rem;line-height:1.4}
+.qtop-name{font-size:.8rem;color:var(--muted)}
+.qtop-side{display:flex;align-items:center;gap:8px;flex:none}
+.timer{font-weight:700;font-variant-numeric:tabular-nums;background:var(--pri-soft);color:var(--pri);padding:2px 10px;border-radius:999px;direction:ltr}
+.timer.low{background:var(--danger-soft);color:var(--danger)}
+.prog{font-weight:700;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.save-st{font-size:.74rem;color:var(--faint);text-align:center}
+.save-st.err{color:var(--danger);font-weight:700}
+.progbar{height:4px;background:var(--line)} .progbar i{display:block;height:100%;width:0;background:var(--pri);transition:width .3s}
+.q-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-top:14px;box-shadow:var(--sh)}
+.q-card.done{border-color:var(--pri-line)}
+.q-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.q-num{width:30px;height:30px;border-radius:9px;background:var(--pri-soft);color:var(--pri);display:grid;place-items:center;font-weight:700;flex:none}
+.q-type{font-size:.8rem;color:var(--muted);font-weight:600}
+.q-text{font-weight:600;font-size:1.02rem;line-height:1.85}
+.ns{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.opts{display:grid;gap:8px;margin-top:10px}
+.opt{display:flex;align-items:center;gap:10px;width:100%;text-align:start;padding:10px 12px;min-height:50px;border:1.5px solid var(--line2);border-radius:12px;background:var(--surface);cursor:pointer;font-weight:500;line-height:1.6}
+.opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--line2);flex:none;position:relative}
+.opt.sel{border-color:var(--pri);background:var(--pri-soft)}
+.opt.sel .dot{border-color:var(--pri)}
+.opt.sel .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--pri)}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mrow{border-top:1px dashed var(--line);padding-top:10px;margin-top:10px}
+.mtext{font-weight:500;margin-bottom:8px}
+.mchips{display:flex;flex-wrap:wrap;gap:6px}
+.mchip{border:1.5px solid var(--line2);background:var(--surface);border-radius:999px;padding:6px 12px;min-height:38px;cursor:pointer;font-size:.9rem;font-weight:500}
+.mchip.sel{background:var(--pri);border-color:var(--pri);color:var(--pri-ink)}
+.ans{margin-top:10px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:6px}
+.submit-zone{margin:22px 0 40px}
+.wm{position:fixed;inset:0;pointer-events:none;z-index:15;background-repeat:repeat}
+.away-ov{position:fixed;inset:0;z-index:40;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;background:rgba(10,15,20,.55)}
+.away-ov > div{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;box-shadow:var(--sh);max-width:360px}
+body.away .away-ov{display:flex}
+body.away #quizBody{filter:blur(12px)}
+.flash{position:fixed;inset:0;z-index:60;background:#000;opacity:.94;pointer-events:none}
+.done-ic{width:64px;height:64px;border-radius:50%;background:var(--ok-soft);color:var(--ok);display:grid;place-items:center;font-size:2rem;margin:0 auto 8px}
+.score-big{margin:14px auto 4px;display:flex;align-items:baseline;justify-content:center;gap:8px}
+.score-big b{font-size:3rem;line-height:1;color:var(--pri);font-variant-numeric:tabular-nums}
+.score-big span{color:var(--muted);font-weight:600}
+.rv{border:1px solid var(--line);border-radius:var(--r-sm);padding:12px;margin-top:10px;background:var(--surface)}
+.rv-q{font-weight:600}
+.rv-a{margin-top:6px;font-size:.93rem}
+.ok-t{color:var(--ok);font-weight:700} .bad-t{color:var(--danger);font-weight:700}
+.atop{background:var(--surface);border-bottom:1px solid var(--line)}
+.atop .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px;flex-wrap:wrap}
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tab{border:0;background:none;padding:10px 14px;font-weight:600;color:var(--muted);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+.tab.on{color:var(--pri);border-bottom-color:var(--pri)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.bar h2{margin:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px}
+.grid2 .card + .card{margin-top:0}
+.qc-title{font-weight:700;font-size:1.05rem;line-height:1.5}
+.qc-meta{color:var(--muted);font-size:.86rem;margin-top:2px}
+.pin-t{font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.12em;direction:ltr;display:inline-block}
+.qc-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.empty{text-align:center;padding:36px 16px;color:var(--muted)}
+.plat{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.switch-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.switch-row:first-child{border-top:0}
+.sw{position:relative;width:52px;height:30px;flex:none;border-radius:999px;background:var(--line2);border:0;cursor:pointer;transition:background .2s;padding:0}
+.sw::after{content:'';position:absolute;top:3px;right:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:right .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.sw.on{background:var(--pri)}
+.sw.on::after{right:25px}
+.mon-head{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start}
+.pinbox{text-align:center;background:var(--pri-soft);border-radius:var(--r);padding:10px 18px}
+.pinbox small{display:block;color:var(--muted);font-weight:600}
+.pinbox b{font-size:2rem;letter-spacing:.14em;direction:ltr;display:block;color:var(--pri);font-variant-numeric:tabular-nums;line-height:1.3}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.stat{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px;text-align:center}
+.stat b{display:block;font-size:1.4rem;line-height:1.3;font-variant-numeric:tabular-nums}
+.stat span{color:var(--muted);font-size:.8rem}
+.list-card{padding:0;overflow:hidden}
+.att{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 14px;border:0;border-bottom:1px solid var(--line);cursor:pointer;align-items:center;width:100%;text-align:start;background:var(--surface)}
+.att:hover{background:var(--surface2)}
+.att:last-child{border-bottom:0}
+.att-name{font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.att-meta{color:var(--muted);font-size:.82rem}
+.att-score{font-weight:700;font-size:1.1rem;text-align:center;min-width:64px;grid-row:1 / span 2;grid-column:2;font-variant-numeric:tabular-nums}
+.flags{display:flex;gap:6px;flex-wrap:wrap;grid-column:1 / -1}
+.risk{width:10px;height:10px;border-radius:50%;flex:none;background:var(--ok)}
+.risk.mid{background:var(--warn)} .risk.high{background:var(--danger)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:.92rem}
+.kv dt{color:var(--muted)} .kv dd{margin:0;font-weight:600}
+.timeline{list-style:none;padding:0;margin:8px 0 0;font-size:.86rem;max-height:220px;overflow:auto;border:1px solid var(--line);border-radius:var(--r-sm)}
+.timeline li{padding:6px 10px;border-bottom:1px solid var(--line);display:flex;gap:10px}
+.timeline li:last-child{border-bottom:0}
+.timeline time{color:var(--muted);font-variant-numeric:tabular-nums;flex:none;direction:ltr}
+.code{direction:ltr;text-align:left;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.78rem;background:var(--surface2);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px;white-space:pre;overflow:auto;max-height:280px;margin:8px 0 0}
+.steps{padding-inline-start:22px;margin:6px 0}
+.steps li{margin-bottom:6px}
+.modal-back{position:fixed;inset:0;z-index:80;background:rgba(10,15,20,.5);display:flex;align-items:flex-end;justify-content:center}
+.modal{background:var(--surface);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:18px 18px 0 0;padding:20px;box-shadow:0 10px 40px rgba(0,0,0,.25)}
+.modal.wide{max-width:880px}
+@media (min-width:700px){.modal-back{align-items:center;padding:20px}.modal{border-radius:18px}}
+.actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}
+.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);z-index:130;background:#1c2730;color:#fff;padding:10px 16px;border-radius:12px;font-weight:600;font-size:.93rem;opacity:0;pointer-events:none;transition:all .25s;max-width:calc(100% - 32px);text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.danger{background:#b3362a} .toast.warn{background:#8f5500} .toast.ok{background:#1c7d45}
+.busy-bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:140;background:linear-gradient(90deg,transparent,var(--pri),transparent);background-size:50% 100%;animation:busy 1s linear infinite;display:none}
+body.busy .busy-bar{display:block}
+@keyframes busy{from{background-position:-50% 0}to{background-position:150% 0}}
+.spinner{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--pri);animation:spin .8s linear infinite;margin:20px auto}
+@keyframes spin{to{transform:rotate(360deg)}}
+.boot{min-height:60vh;display:grid;place-items:center}
+.proj{position:fixed;inset:0;z-index:90;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;gap:8px;overflow:auto}
+.proj-x{position:absolute;top:14px;left:14px}
+.proj-title{font-size:clamp(1.2rem,3vw,2.1rem);font-weight:700}
+.proj-grid{display:flex;gap:44px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.proj-qr{background:#fff;padding:14px;border-radius:16px;border:1px solid var(--line);min-width:120px;min-height:120px;display:grid;place-items:center}
+.proj-qr img,.proj-qr canvas{display:block}
+.proj-steps{font-size:clamp(1rem,2.1vw,1.45rem);text-align:start;line-height:2}
+.proj-pin{font-size:clamp(3rem,9vw,6.5rem);font-weight:700;letter-spacing:.1em;color:var(--pri);line-height:1.1;direction:ltr;font-variant-numeric:tabular-nums}
+.proj-link{color:var(--muted);direction:ltr;font-size:.85rem;word-break:break-all;max-width:90vw}
+#print-root{display:none}
+body.printing #app,body.printing #modal-root,body.printing #toast{display:none !important}
+body.printing #print-root{display:block}
+body.printing{background:#e9edf0}
+.rp-tool{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;padding:10px 16px;display:flex;gap:8px;justify-content:center;z-index:5;color:#111}
+.rp-tool .btn{background:#fff;color:#111;border-color:#ccc}
+.rp-tool .btn.pri{background:#0d7a68;color:#fff;border-color:#0d7a68}
+.rp{background:#fff;color:#111;max-width:820px;margin:16px auto;padding:28px 32px;border-radius:8px;font-size:14px;line-height:1.8}
+.rp h1{font-size:20px;margin:4px 0} .rp h2{font-size:16px;margin:22px 0 8px;border-bottom:2px solid #0d7a68;padding-bottom:4px}
+.rp-brand{color:#0d7a68;font-weight:700;font-size:13px}
+.rp-meta{color:#444;font-size:13px}
+.rp-stats{display:flex;gap:18px;flex-wrap:wrap;margin:10px 0;font-size:13px;color:#333}
+.rp table{width:100%;border-collapse:collapse;margin-top:6px}
+.rp th,.rp td{border:1px solid #cfd6db;padding:5px 8px;text-align:right;vertical-align:top}
+.rp th{background:#eef5f3}
+.rp tr{break-inside:avoid}
+.rp .num{font-variant-numeric:tabular-nums;text-align:center;white-space:nowrap}
+.rp .rq{break-inside:avoid;border:1px solid #dfe4e8;border-radius:6px;padding:8px 10px;margin-top:8px}
+.rp .rq-q{font-weight:700}
+.rp .rq-ok{color:#1c7d45;font-weight:700}
+.rp .rq-ex{color:#555;font-size:13px}
+.rp-foot{margin-top:22px;color:#777;font-size:12px;text-align:center}
+@media print{
+  body.printing{background:#fff}
+  .rp-tool{display:none !important}
+  .rp{margin:0;max-width:none;padding:0;border-radius:0}
+  @page{size:A4;margin:14mm}
+}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .mon-head{grid-template-columns:1fr}
+  .rp{padding:16px;margin:8px}
+}
+</style>
+</head>
+<body>
+<div class="busy-bar"></div>
+<div id="app"><div class="boot"><div class="spinner"></div></div></div>
+<div id="modal-root"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<div id="print-root"></div>
+
+<script type="module">
+/* =========================================================
+   مِران — منصة التطبيقات العملية
+   تطوير: د. عبدالله القويفلي
+   ملف واحد: صفحة الطالب + لوحة الأستاذ (#admin)
+   ========================================================= */
+
+/* ---------- إعدادات عامة ---------- */
+const APP = { name: 'مِران', tagline: 'منصة التطبيقات العملية', dev: 'د. عبدالله القويفلي' };
+const FB_VER = '10.12.2';
+const P = 'mrn_';            // بادئة مجموعات قاعدة البيانات
+const PIN_LEN = 5;           // عدد أرقام رمز الدخول
+const BULK_LIMIT = 25;       // أقصى عدد أحرف يُقبل إدخالها دفعة واحدة
+const GRACE_SEC = 90;        // مهلة حفظ الإجابات بعد إغلاق النموذج
+// اختياري: لمن يريد وضع إعدادات فايربيز داخل الملف بدل لصقها في لوحة التحكم:
+// const DEFAULT_CONFIG = { apiKey: '...', projectId: '...' };
+const DEFAULT_CONFIG = {
+  apiKey: 'AIzaSyB0fHIa89zBVMCE2Ik4xkcNSY9OgHt7If4',
+  authDomain: 'mran-4504f.firebaseapp.com',
+  projectId: 'mran-4504f',
+  appId: '1:515464677357:web:a024043b59fb7a3ca209e4'
+};
+
+const SERVER_TS = { __mrn: 'ts' };
+const DEL = { __mrn: 'del' };
+
+/* ---------- أدوات ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const nl = s => esc(s).replace(/\n/g, '<br>');
+const rid = (n = 10) => Array.from(crypto.getRandomValues(new Uint8Array(n)), b => 'abcdefghijkmnpqrstuvwxyz23456789'[b % 32]).join('');
+const clone = v => v === undefined ? null : JSON.parse(JSON.stringify(v));
+const toMs = v => !v ? null : typeof v === 'number' ? v : v.toMillis ? v.toMillis() : (v.seconds != null ? v.seconds * 1000 : null);
+const toLatin = s => String(s ?? '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+const normName = s => String(s || '').replace(/[ً-ْٰـ]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/\s+/g, ' ').trim();
+const nameKey = s => normName(s).replace(/[\/.#\[\]*`~$]/g, '_').slice(0, 140) || 'x';
+const round4 = x => Math.round(x * 4) / 4;
+const normSid = s => toLatin(s).replace(/\D/g, '');
+const validSid = s => /^\d{6,12}$/.test(s);
+const normStudent = x => typeof x === 'string' ? { id: '', name: x.trim() } : { id: normSid(x?.id || ''), name: String(x?.name || '').trim() };
+const rosterOf = q => (q?.roster || []).map(normStudent);
+const rosterIds = list => (list || []).map(normStudent).map(x => x.id).filter(Boolean);
+const stuKey = x => x.id || nameKey(x.name);
+let ipCache = null;
+async function getIP() {
+  if (ipCache != null) return ipCache;
+  try { const c = new AbortController(); const t = setTimeout(() => c.abort(), 3500); const r = await fetch('https://api.ipify.org?format=json', { signal: c.signal, cache: 'no-store' }); clearTimeout(t); ipCache = String((await r.json()).ip || ''); }
+  catch (e) { ipCache = ''; }
+  return ipCache;
+}
+const fmtNum = x => { const v = Math.round(Number(x) * 100) / 100; return Number.isFinite(v) ? String(v) : '—'; };
+const secs = ms => { const s = Math.round((ms || 0) / 1000); if (s < 60) return s + ' ث'; const m = Math.floor(s / 60); return m + ' د' + (s % 60 ? ' ' + (s % 60) + ' ث' : ''); };
+const clock = ms => ms ? new Date(ms).toLocaleTimeString('ar-SA-u-nu-latn', { hour: 'numeric', minute: '2-digit' }) : '—';
+const clockS = ms => ms ? new Date(ms).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' }) : '';
+const dayHijri = ms => { try { return new Intl.DateTimeFormat('ar-SA-u-ca-islamic-umalqura-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(ms)); } catch (e) { return new Date(ms).toLocaleDateString(); } };
+const dayGreg = ms => new Date(ms).toLocaleDateString('ar-SA-u-ca-gregory-nu-latn', { day: 'numeric', month: 'long', year: 'numeric' });
+const coll = new Intl.Collator('ar');
+const sortByCreated = arr => arr.sort((a, b) => (toMs(b.createdAt) || 0) - (toMs(a.createdAt) || 0));
+const E = code => Object.assign(new Error(code), { code });
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const lsGet = (k, d = null) => { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } };
+const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} };
+const lsDel = k => { try { localStorage.removeItem(k); } catch (e) {} };
+
+function parseHash() {
+  const o = {};
+  location.hash.replace(/^#/, '').split('&').filter(Boolean).forEach(p => {
+    const i = p.indexOf('=');
+    if (i < 0) o[decodeURIComponent(p)] = true;
+    else o[decodeURIComponent(p.slice(0, i))] = decodeURIComponent(p.slice(i + 1));
+  });
+  return o;
+}
+function parseConfigText(t) {
+  const g = k => { const m = String(t || '').match(new RegExp('["\']?' + k + '["\']?\\s*:\\s*["\']([^"\']+)["\']')); return m ? m[1].trim() : ''; };
+  const c = { apiKey: g('apiKey'), projectId: g('projectId'), authDomain: g('authDomain'), appId: g('appId') };
+  return c.apiKey && c.projectId ? c : null;
+}
+const encodeCfg = c => [c.projectId, c.apiKey].concat(c.authDomain && c.authDomain !== c.projectId + '.firebaseapp.com' ? [c.authDomain] : []).join('~');
+function decodeCfg(s) {
+  const p = String(s || '').split('~');
+  if (p.length < 2 || !/^[a-z0-9-]+$/.test(p[0]) || !/^[A-Za-z0-9_-]{20,}$/.test(p[1])) return null;
+  return { projectId: p[0], apiKey: p[1], authDomain: p[2] || '' };
+}
+let RUNTIME_CFG = null;
+const readCfg = () => DEFAULT_CONFIG || RUNTIME_CFG || lsGet('mrn_cfg');
+
+let toastT;
+function toast(msg, kind = 'info', ms = 2800) {
+  const t = $('#toast'); t.className = 'toast show ' + kind; t.textContent = msg;
+  clearTimeout(toastT); toastT = setTimeout(() => { t.className = 'toast'; }, ms);
+}
+async function busy(fn) {
+  document.body.classList.add('busy');
+  try { return await fn(); }
+  catch (e) { console.error(e); toast(errMsg(e), 'danger', 6000); }
+  finally { document.body.classList.remove('busy'); }
+}
+function errMsg(e) {
+  const c = String(e?.code || '') + ' ' + String(e?.message || '');
+  if (/name-taken/.test(c)) return 'هذا الرقم الجامعي دخل النموذج من قبل. إن كان رقمك فاطلب من الأستاذ «إعادة السماح» لك.';
+  if (/bind-conflict/.test(c)) return 'هذا الرقم مرتبط بجهاز آخر، أو هذا الجهاز مرتبط برقم آخر.';
+  if (/not-in-roster/.test(c)) return 'هذا الرقم غير موجود في قائمة طلاب هذا النموذج. تأكد منه.';
+  if (/quiz-closed/.test(c)) return 'هذا النموذج مغلق.';
+  if (/permission-denied|insufficient permissions/i.test(c)) return S.mode === 'demo' ? 'غير مسموح: النموذج مغلق أو سُلّمت الإجابات.' : 'لا توجد صلاحية. تأكد من نشر قواعد الأمان (Rules) وأن بريد الأستاذ مكتوب فيها، وأن النموذج مفتوح.';
+  if (/operation-not-allowed|admin-restricted/i.test(c)) return S.isAdmin ? 'طريقة الدخول غير مفعّلة. فعّل Email/Password و Anonymous في Firebase Authentication.' : 'تعذر دخول الطلاب: يلزم تفعيل الدخول المجهول (Anonymous) في Firebase Authentication. أبلغ الأستاذ.';
+  if (/invalid-credential|wrong-password|user-not-found|invalid-email|invalid-login/i.test(c)) return 'البريد أو كلمة المرور غير صحيحة.';
+  if (/too-many-requests/i.test(c)) return 'محاولات كثيرة. انتظر قليلاً ثم أعد المحاولة.';
+  if (/api-key-not-valid|invalid-api-key/i.test(c)) return 'إعدادات فايربيز غير صحيحة (apiKey).';
+  if (/unavailable|network|offline|Failed to fetch|failed to fetch/i.test(c)) return 'تعذر الاتصال. تحقق من الإنترنت ثم أعد المحاولة.';
+  if (/not-found|NOT_FOUND/.test(c)) return 'قاعدة البيانات غير موجودة. أنشئ Firestore Database في مشروع فايربيز.';
+  return 'حدث خطأ: ' + (e?.message || e?.code || 'غير معروف');
+}
+
+/* ---------- نوافذ ---------- */
+function modal(html, opts = {}) {
+  const root = $('#modal-root');
+  root.innerHTML = `<div class="modal-back"><div class="modal ${opts.wide ? 'wide' : ''}" role="dialog" aria-modal="true">${html}</div></div>`;
+  const back = root.firstElementChild;
+  back.addEventListener('click', e => { if (e.target === back && !opts.sticky) closeModal(); });
+  modal.onClose = opts.onClose || null;
+  const m = back.firstElementChild;
+  m.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => closeModal()));
+  return m;
+}
+function closeModal() { const f = modal.onClose; modal.onClose = null; $('#modal-root').innerHTML = ''; if (f) f(); }
+function confirmBox(title, bodyHtml, okText = 'تأكيد', danger = false) {
+  return new Promise(res => {
+    const m = modal(`<h3>${esc(title)}</h3><div class="muted">${bodyHtml}</div><div class="actions"><button class="btn ghost" data-no>إلغاء</button><button class="btn ${danger ? 'danger' : 'pri'}" data-yes>${esc(okText)}</button></div>`, { onClose: () => res(false) });
+    m.querySelector('[data-no]').onclick = () => closeModal();
+    m.querySelector('[data-yes]').onclick = () => { modal.onClose = null; closeModal(); res(true); };
+  });
+}
+function loadScript(src, globalName) {
+  return new Promise((res, rej) => {
+    if (globalName && window[globalName]) return res();
+    const s = document.createElement('script'); s.src = src; s.async = true;
+    s.onload = () => res(); s.onerror = () => rej(new Error('تعذر تحميل ' + src));
+    document.head.appendChild(s);
+  });
+}
+async function renderQR(el, text, size) {
+  if (!el) return;
+  try {
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', 'QRCode');
+    el.innerHTML = '';
+    new window.QRCode(el, { text, width: size, height: size, colorDark: '#000000', colorLight: '#ffffff', correctLevel: window.QRCode.CorrectLevel.M });
+  } catch (e) { el.innerHTML = '<div class="muted small">تعذر إنشاء رمز QR، استعمل الرابط.</div>'; }
+}
+function download(content, filename, type) {
+  const blob = content instanceof Blob ? content : new Blob([content], { type });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); toast('نُسخ', 'ok'); }
+  catch (e) { const t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select(); try { document.execCommand('copy'); toast('نُسخ', 'ok'); } catch (_) { toast('انسخ يدوياً', 'warn'); } t.remove(); }
+}
+
+/* =========================================================
+   طبقة البيانات: وضع تجريبي (في المتصفح) + فايربيز
+   ========================================================= */
+class MockDB {
+  constructor() {
+    this.k = 'mrn_demo_db'; this.subs = new Set();
+    let u = sessionStorage.getItem('mrn_demo_uid'); if (!u) { u = 'u' + rid(10); sessionStorage.setItem('mrn_demo_uid', u); }
+    this.uid = u;
+    addEventListener('storage', e => { if (e.key === this.k) this._emit(); });
+  }
+  _blank() { return { groups: {}, quizzes: {}, keys: {}, attempts: {}, taken: {}, bind: {}, devices: {}, requests: {}, settings: { global: { open: true } } }; }
+  _load() { try { return Object.assign(this._blank(), JSON.parse(localStorage.getItem(this.k) || '{}')); } catch (e) { return this._blank(); } }
+  _save(d) { localStorage.setItem(this.k, JSON.stringify(d)); this._emit(); }
+  _emit() { for (const f of [...this.subs]) { try { f(); } catch (e) { console.error(e); } } }
+  _sub(fn) { const w = () => fn(); this.subs.add(w); setTimeout(w, 0); return () => this.subs.delete(w); }
+  _tx(fn) { const run = () => { const d = this._load(); const r = fn(d); this._save(d); return r; }; return navigator.locks?.request ? navigator.locks.request('mrn_demo_db', run) : Promise.resolve().then(run); }
+  _apply(o, p) { for (const [k, v] of Object.entries(p)) { if (v === SERVER_TS) o[k] = Date.now(); else if (v === DEL) delete o[k]; else o[k] = clone(v); } return o; }
+  onTeacher(cb) { this._tcb = cb; const e = sessionStorage.getItem('mrn_demo_t'); setTimeout(() => cb(e ? { email: e } : null), 0); return () => { this._tcb = null; }; }
+  async teacherLogin(email) { const e = String(email || '').trim() || 'demo@teacher'; sessionStorage.setItem('mrn_demo_t', e); this._tcb && this._tcb({ email: e }); }
+  async teacherLogout() { sessionStorage.removeItem('mrn_demo_t'); this._tcb && this._tcb(null); }
+  async ensureStudent() { return this.uid; }
+  watchSettings(cb) { return this._sub(() => cb(this._load().settings.global || { open: true })); }
+  async getSettings() { return this._load().settings.global || { open: true }; }
+  async setSettings(p) { return this._tx(d => { d.settings.global = this._apply(d.settings.global || { open: true }, p); }); }
+  watchGroups(cb) { return this._sub(() => cb(sortByCreated(Object.values(this._load().groups)))); }
+  async saveGroup(g) { return this._tx(d => { const id = g.id || ('g' + rid(8)); const { id: _x, ...rest } = g; d.groups[id] = this._apply(d.groups[id] || { id, createdAt: Date.now() }, { ...rest, updatedAt: SERVER_TS }); return id; }); }
+  async updateGroup(id, p) { return this._tx(d => { if (d.groups[id]) this._apply(d.groups[id], p); }); }
+  async deleteGroup(id) { return this._tx(d => { delete d.groups[id]; }); }
+  watchQuizzes(cb) { return this._sub(() => cb(sortByCreated(Object.values(this._load().quizzes)))); }
+  watchQuiz(id, cb) { return this._sub(() => cb(clone(this._load().quizzes[id] || null))); }
+  async getQuiz(id) { return clone(this._load().quizzes[id] || null); }
+  async createQuiz(pub, key) { return this._tx(d => { const id = 'q' + rid(10); d.quizzes[id] = this._apply({ id }, { ...pub, createdAt: SERVER_TS }); d.keys[id] = { key: clone(key) }; return id; }); }
+  async updateQuiz(id, p) { return this._tx(d => { if (!d.quizzes[id]) throw E('not-found'); this._apply(d.quizzes[id], p); }); }
+  async deleteQuiz(id) { return this._tx(d => { delete d.quizzes[id]; delete d.keys[id]; for (const k of Object.keys(d.attempts)) if (k.startsWith(id + '/')) delete d.attempts[k]; for (const k of Object.keys(d.taken)) if (k.startsWith(id + '/')) delete d.taken[k]; }); }
+  async getKey(id) { return clone(this._load().keys[id]?.key || null); }
+  async setKey(id, key) { return this._tx(d => { d.keys[id] = { key: clone(key) }; }); }
+  async findOpenQuizByPin(pin) { return clone(Object.values(this._load().quizzes).find(q => q.pin === pin && q.status === 'open') || null); }
+  watchAttempts(qid, cb) { return this._sub(() => { const d = this._load(); cb(Object.entries(d.attempts).filter(([k]) => k.startsWith(qid + '/')).map(([k, v]) => ({ ...clone(v), id: k.slice(qid.length + 1) }))); }); }
+  watchAttempt(qid, uid, cb) { return this._sub(() => { const a = this._load().attempts[qid + '/' + uid]; cb(a ? { ...clone(a), id: uid } : null); }); }
+  async getAttempt(qid, uid) { const a = this._load().attempts[qid + '/' + uid]; return a ? { ...clone(a), id: uid } : null; }
+  async isTaken(qid, nk) { return !!this._load().taken[qid + '/' + nk]; }
+  watchTaken(qid, cb) { return this._sub(() => { const d = this._load(); cb(Object.entries(d.taken).filter(([k]) => k.startsWith(qid + '/')).map(([, v]) => v)); }); }
+  async getBind(sid) { const b = this._load().bind[sid]; return b ? { ...clone(b), id: sid } : null; }
+  async getDevice(uid) { const v = this._load().devices[uid]; return v ? { ...clone(v), id: uid } : null; }
+  watchBind(sid, cb) { return this._sub(() => { const b = this._load().bind[sid]; cb(b ? { ...clone(b), id: sid } : null); }); }
+  watchDevice(uid, cb) { return this._sub(() => { const v = this._load().devices[uid]; cb(v ? { ...clone(v), id: uid } : null); }); }
+  async putRequest(r) { return this._tx(d => { const id = r.sid + '_' + r.uid; d.requests[id] = { ...(d.requests[id] || {}), ...clone(r), id, status: 'pending', at: Date.now() }; }); }
+  watchRequest(id, cb) { return this._sub(() => cb(clone(this._load().requests[id] || null))); }
+  watchRequests(cb) { return this._sub(() => cb(Object.values(this._load().requests).filter(r => r.status === 'pending').sort((a, b) => a.at - b.at))); }
+  async approveRequest(r) { return this._tx(d => {
+    const old = d.bind[r.sid]; if (old && old.uid !== r.uid && d.devices[old.uid]?.sid === r.sid) delete d.devices[old.uid];
+    const prev = d.devices[r.uid]; if (prev && prev.sid !== r.sid && d.bind[prev.sid]?.uid === r.uid) delete d.bind[prev.sid];
+    d.bind[r.sid] = { uid: r.uid, ip: r.ip || '', at: Date.now() }; d.devices[r.uid] = { sid: r.sid, at: Date.now() };
+    delete d.requests[r.sid + '_' + r.uid]; }); }
+  async rejectRequest(r) { return this._tx(d => { const x = d.requests[r.sid + '_' + r.uid]; if (x) x.status = 'rejected'; }); }
+  async unbind(sid, uid) { return this._tx(d => { if (d.bind[sid]?.uid === uid) delete d.bind[sid]; if (d.devices[uid]?.sid === sid) delete d.devices[uid]; }); }
+  async startAttempt(qid, uid, data, nk) {
+    return this._tx(d => {
+    const q = d.quizzes[qid]; const s = d.settings.global || {};
+    if (!q || q.status !== 'open' || q.courseClosed || s.open === false) throw E('permission-denied');
+    const b = d.bind[data.sid], dv = d.devices[uid];
+    if ((b && b.uid !== uid) || (dv && dv.sid !== data.sid)) throw E('bind-conflict');
+    if ((q.rosterIds || []).length && !q.rosterIds.includes(data.sid)) throw E('not-in-roster');
+    if (d.taken[qid + '/' + nk]) throw E('name-taken');
+    if (d.attempts[qid + '/' + uid]) throw E('permission-denied');
+    if (!b) d.bind[data.sid] = { uid, ip: data.ip || '', at: Date.now() };
+    if (!dv) d.devices[uid] = { sid: data.sid, at: Date.now() };
+    d.taken[qid + '/' + nk] = { name: data.name, sid: data.sid, uid, at: Date.now() };
+    d.attempts[qid + '/' + uid] = this._apply({}, { ...data, uid, status: 'in_progress', startedAt: SERVER_TS });
+    });
+  }
+  async saveAttempt(qid, uid, p) {
+    return this._tx(d => {
+    const a = d.attempts[qid + '/' + uid]; const q = d.quizzes[qid];
+    if (!a || !q || a.status !== 'in_progress') throw E('permission-denied');
+    const ok = q.status === 'open' || (q.status === 'closed' && q.closedAt && Date.now() < q.closedAt + GRACE_SEC * 1000);
+    if (!ok) throw E('permission-denied');
+    this._apply(a, p);
+    });
+  }
+  async teacherUpdateAttempt(qid, uid, p) { return this._tx(d => { const a = d.attempts[qid + '/' + uid]; if (a) this._apply(a, p); }); }
+  async resetAttempt(qid, uid, nk) { return this._tx(d => { delete d.attempts[qid + '/' + uid]; if (nk) delete d.taken[qid + '/' + nk]; }); }
+}
+
+class FireDB {
+  async init(cfg) {
+    const base = `https://www.gstatic.com/firebasejs/${FB_VER}/`;
+    const [A, U, F] = await Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-firestore.js')]);
+    this.U = U; this.F = F;
+    const conf = { apiKey: cfg.apiKey, authDomain: cfg.authDomain || `${cfg.projectId}.firebaseapp.com`, projectId: cfg.projectId };
+    if (cfg.appId) conf.appId = cfg.appId;
+    this.app = A.initializeApp(conf);
+    this.auth = U.getAuth(this.app);
+    this.db = F.initializeFirestore(this.app, { ignoreUndefinedProperties: true });
+    if (this.auth.authStateReady) await this.auth.authStateReady();
+  }
+  _v(p) { const o = {}; for (const [k, v] of Object.entries(p)) o[k] = v === SERVER_TS ? this.F.serverTimestamp() : v === DEL ? this.F.deleteField() : (v === undefined ? null : v); return o; }
+  _dt(d) { return { id: d.id, ...d.data({ serverTimestamps: 'estimate' }) }; }
+  _d(s) { return s.exists() ? this._dt(s) : null; }
+  col(...p) { return this.F.collection(this.db, ...p); }
+  ref(...p) { return this.F.doc(this.db, ...p); }
+  onTeacher(cb) { return this.U.onAuthStateChanged(this.auth, u => cb(u && !u.isAnonymous && u.email ? { email: u.email } : null)); }
+  async teacherLogin(email, pass) { await this.U.signInWithEmailAndPassword(this.auth, String(email).trim(), pass); }
+  async teacherLogout() { await this.U.signOut(this.auth); }
+  async ensureStudent() { if (this.auth.currentUser) return this.auth.currentUser.uid; const c = await this.U.signInAnonymously(this.auth); return c.user.uid; }
+  watchSettings(cb, er) { return this.F.onSnapshot(this.ref(P + 'settings', 'global'), s => cb(s.exists() ? s.data() : { open: true }), er); }
+  async getSettings() { const s = await this.F.getDoc(this.ref(P + 'settings', 'global')); return s.exists() ? s.data() : { open: true }; }
+  async setSettings(p) { await this.F.setDoc(this.ref(P + 'settings', 'global'), this._v(p), { merge: true }); }
+  watchGroups(cb, er) { return this.F.onSnapshot(this.col(P + 'groups'), s => cb(sortByCreated(s.docs.map(d => this._dt(d)))), er); }
+  async saveGroup(g) { const { id, ...rest } = g; if (id) { await this.F.setDoc(this.ref(P + 'groups', id), this._v({ ...rest, updatedAt: SERVER_TS }), { merge: true }); return id; } const r = await this.F.addDoc(this.col(P + 'groups'), this._v({ ...rest, createdAt: SERVER_TS, updatedAt: SERVER_TS })); return r.id; }
+  async updateGroup(id, p) { await this.F.updateDoc(this.ref(P + 'groups', id), this._v(p)); }
+  async deleteGroup(id) { await this.F.deleteDoc(this.ref(P + 'groups', id)); }
+  watchQuizzes(cb, er) { return this.F.onSnapshot(this.col(P + 'quizzes'), s => cb(sortByCreated(s.docs.map(d => this._dt(d)))), er); }
+  watchQuiz(id, cb, er) { return this.F.onSnapshot(this.ref(P + 'quizzes', id), s => cb(this._d(s)), er); }
+  async getQuiz(id) { return this._d(await this.F.getDoc(this.ref(P + 'quizzes', id))); }
+  async createQuiz(pub, key) { const r = this.F.doc(this.col(P + 'quizzes')); const b = this.F.writeBatch(this.db); b.set(r, this._v({ ...pub, createdAt: SERVER_TS })); b.set(this.ref(P + 'keys', r.id), { key }); await b.commit(); return r.id; }
+  async updateQuiz(id, p) { await this.F.updateDoc(this.ref(P + 'quizzes', id), this._v(p)); }
+  async deleteQuiz(id) { for (const sub of ['attempts', 'taken']) { const s = await this.F.getDocs(this.col(P + 'quizzes', id, sub)); for (const d of s.docs) await this.F.deleteDoc(d.ref); } await this.F.deleteDoc(this.ref(P + 'keys', id)); await this.F.deleteDoc(this.ref(P + 'quizzes', id)); }
+  async getKey(id) { const s = await this.F.getDoc(this.ref(P + 'keys', id)); return s.exists() ? s.data().key : null; }
+  async setKey(id, key) { await this.F.setDoc(this.ref(P + 'keys', id), { key }); }
+  async findOpenQuizByPin(pin) { const F = this.F; const s = await F.getDocs(F.query(this.col(P + 'quizzes'), F.where('pin', '==', pin), F.where('status', '==', 'open'), F.limit(1))); return s.empty ? null : this._dt(s.docs[0]); }
+  watchAttempts(qid, cb, er) { return this.F.onSnapshot(this.col(P + 'quizzes', qid, 'attempts'), s => cb(s.docs.map(d => this._dt(d))), er); }
+  watchAttempt(qid, uid, cb, er) { return this.F.onSnapshot(this.ref(P + 'quizzes', qid, 'attempts', uid), s => cb(this._d(s)), er); }
+  async getAttempt(qid, uid) { return this._d(await this.F.getDoc(this.ref(P + 'quizzes', qid, 'attempts', uid))); }
+  async isTaken(qid, nk) { return (await this.F.getDoc(this.ref(P + 'quizzes', qid, 'taken', nk))).exists(); }
+  watchTaken(qid, cb, er) { return this.F.onSnapshot(this.col(P + 'quizzes', qid, 'taken'), s => cb(s.docs.map(d => d.data())), er); }
+  async getBind(sid) { return this._d(await this.F.getDoc(this.ref(P + 'bind', sid))); }
+  async getDevice(uid) { return this._d(await this.F.getDoc(this.ref(P + 'devices', uid))); }
+  watchBind(sid, cb, er) { return this.F.onSnapshot(this.ref(P + 'bind', sid), s => cb(this._d(s)), er); }
+  watchDevice(uid, cb, er) { return this.F.onSnapshot(this.ref(P + 'devices', uid), s => cb(this._d(s)), er); }
+  async putRequest(r) {
+    const ref = this.ref(P + 'requests', r.sid + '_' + r.uid);
+    const s = await this.F.getDoc(ref);
+    if (s.exists()) await this.F.updateDoc(ref, { status: 'pending', at: this.F.serverTimestamp(), ip: r.ip || '', qid: r.qid || '', quizTitle: r.quizTitle || '' });
+    else await this.F.setDoc(ref, { ...r, status: 'pending', at: this.F.serverTimestamp() });
+  }
+  watchRequest(id, cb, er) { return this.F.onSnapshot(this.ref(P + 'requests', id), s => cb(this._d(s)), er); }
+  watchRequests(cb, er) { const F = this.F; return F.onSnapshot(F.query(this.col(P + 'requests'), F.where('status', '==', 'pending')), s => cb(s.docs.map(d => this._dt(d)).sort((a, b) => (toMs(a.at) || 0) - (toMs(b.at) || 0))), er); }
+  async approveRequest(r) {
+    const F = this.F, b = F.writeBatch(this.db);
+    const old = await this.getBind(r.sid), prev = await this.getDevice(r.uid);
+    if (old && old.uid !== r.uid) { const od = await this.getDevice(old.uid); if (od && od.sid === r.sid) b.delete(this.ref(P + 'devices', old.uid)); }
+    if (prev && prev.sid !== r.sid) { const pb = await this.getBind(prev.sid); if (pb && pb.uid === r.uid) b.delete(this.ref(P + 'bind', prev.sid)); }
+    b.set(this.ref(P + 'bind', r.sid), { uid: r.uid, ip: r.ip || '', at: F.serverTimestamp() });
+    b.set(this.ref(P + 'devices', r.uid), { sid: r.sid, at: F.serverTimestamp() });
+    b.delete(this.ref(P + 'requests', r.sid + '_' + r.uid));
+    await b.commit();
+  }
+  async rejectRequest(r) { await this.F.updateDoc(this.ref(P + 'requests', r.sid + '_' + r.uid), { status: 'rejected' }); }
+  async unbind(sid, uid) {
+    const bd = await this.getBind(sid), dv = await this.getDevice(uid), b = this.F.writeBatch(this.db);
+    if (bd && bd.uid === uid) b.delete(this.ref(P + 'bind', sid));
+    if (dv && dv.sid === sid) b.delete(this.ref(P + 'devices', uid));
+    await b.commit();
+  }
+  async startAttempt(qid, uid, data, nk, need = {}) {
+    const b = this.F.writeBatch(this.db);
+    if (need.bind) b.set(this.ref(P + 'bind', data.sid), { uid, ip: data.ip || '', at: this.F.serverTimestamp() });
+    if (need.device) b.set(this.ref(P + 'devices', uid), { sid: data.sid, at: this.F.serverTimestamp() });
+    b.set(this.ref(P + 'quizzes', qid, 'taken', nk), { name: data.name, sid: data.sid, uid, at: this.F.serverTimestamp() });
+    b.set(this.ref(P + 'quizzes', qid, 'attempts', uid), this._v({ ...data, uid, status: 'in_progress', startedAt: SERVER_TS }));
+    await b.commit();
+  }
+  async saveAttempt(qid, uid, p) { await this.F.updateDoc(this.ref(P + 'quizzes', qid, 'attempts', uid), this._v(p)); }
+  async teacherUpdateAttempt(qid, uid, p) { await this.F.updateDoc(this.ref(P + 'quizzes', qid, 'attempts', uid), this._v(p)); }
+  async resetAttempt(qid, uid, nk) { await this.F.deleteDoc(this.ref(P + 'quizzes', qid, 'attempts', uid)); if (nk) await this.F.deleteDoc(this.ref(P + 'quizzes', qid, 'taken', nk)); }
+}
+
+/* =========================================================
+   الأسئلة والتصحيح
+   ========================================================= */
+const TYPE_LABEL = { mcq: 'اختيار من متعدد', tf: 'صح أو خطأ', match: 'تصنيف', text: 'كتابة تطبيقية' };
+function resolveIndex(ans, options) {
+  if (typeof ans === 'number') return Number.isInteger(ans) && ans >= 1 && ans <= options.length ? ans - 1 : -1;
+  if (typeof ans === 'string') {
+    const t = toLatin(ans).trim();
+    if (/^\d+$/.test(t)) { const n = +t; return n >= 1 && n <= options.length ? n - 1 : -1; }
+    return options.findIndex(o => String(o).trim() === ans.trim());
+  }
+  return -1;
+}
+function parseTF(v) {
+  if (v === true || v === false) return v;
+  const s = String(v ?? '').trim().toLowerCase();
+  if (['true', 'صح', 'صحيح', 'صواب', '1', 'نعم'].includes(s)) return true;
+  if (['false', 'خطأ', 'خطا', 'غلط', '0', 'لا'].includes(s)) return false;
+  return null;
+}
+function compileQuestions(raw) {
+  const src = Array.isArray(raw) ? { questions: raw } : (raw || {});
+  const list = Array.isArray(src.questions) ? src.questions : [];
+  const questions = [], key = {}, errors = [];
+  if (!list.length) errors.push('لا توجد أسئلة في الملف (المفتاح questions).');
+  list.forEach((q, n) => {
+    const id = 'q' + (n + 1);
+    const type = String(q.type || '').toLowerCase().trim();
+    const text = String(q.text || '').trim();
+    const where = `السؤال ${n + 1}: `;
+    if (!text) errors.push(where + 'لا يوجد نص.');
+    const pts = q.points != null && Number.isFinite(Number(q.points)) ? Math.max(0, Number(q.points)) : (type === 'match' ? 2 : type === 'text' ? 0 : 1);
+    const ex = String(q.explanation || '').trim();
+    if (type === 'mcq') {
+      const opts = (q.options || []).map((t, i) => ({ id: 'o' + (i + 1), text: String(t) }));
+      const ai = resolveIndex(q.answer, (q.options || []).map(String));
+      if (opts.length < 2) errors.push(where + 'يحتاج خيارين على الأقل.');
+      if (ai < 0) errors.push(where + 'رقم الإجابة الصحيحة غير صحيح (answer يبدأ من 1).');
+      questions.push({ id, type, text, points: pts, options: opts });
+      key[id] = { answer: 'o' + (ai + 1), explanation: ex };
+    } else if (type === 'tf') {
+      const a = parseTF(q.answer);
+      if (a === null) errors.push(where + 'الإجابة يجب أن تكون true أو false.');
+      questions.push({ id, type, text, points: pts });
+      key[id] = { answer: a, explanation: ex };
+    } else if (type === 'match') {
+      const optsRaw = (q.options || []).map(String);
+      const opts = optsRaw.map((t, i) => ({ id: 'o' + (i + 1), text: t }));
+      const items = [], answers = {};
+      (q.items || []).forEach((it, i) => {
+        const iid = 'i' + (i + 1);
+        const t = typeof it === 'string' ? it : String(it.text || '');
+        const ai = resolveIndex(typeof it === 'string' ? null : it.answer, optsRaw);
+        if (ai < 0) errors.push(where + `البند ${i + 1} بلا إجابة صحيحة.`);
+        items.push({ id: iid, text: t }); answers[iid] = 'o' + (ai + 1);
+      });
+      if (opts.length < 2 || !items.length) errors.push(where + 'التصنيف يحتاج خيارات (options) وبنوداً (items).');
+      questions.push({ id, type, text, points: pts, options: opts, items });
+      key[id] = { answers, explanation: ex };
+    } else if (type === 'text') {
+      questions.push({ id, type, text, points: 0 });
+      key[id] = { model: String(q.model || q.answer || '').trim(), explanation: ex };
+    } else errors.push(where + `نوع غير معروف «${esc(q.type)}» (الأنواع: mcq, tf, match, text).`);
+  });
+  const autoTotal = questions.filter(x => x.type !== 'text').reduce((s, x) => s + x.points, 0);
+  return { title: String(src.title || '').trim(), maxScore: Number(src.maxScore) || null, durationMin: src.durationMin != null ? Number(src.durationMin) : null, questions, key, autoTotal, errors };
+}
+function grade(quiz, key, answers) {
+  let earned = 0, total = 0; const per = {};
+  for (const x of quiz.questions || []) {
+    const k = key?.[x.id]; if (!k || x.type === 'text') continue;
+    const a = answers?.[x.id];
+    total += x.points;
+    if (x.type === 'mcq' || x.type === 'tf') { const ok = a === k.answer; per[x.id] = ok ? 1 : 0; if (ok) earned += x.points; }
+    else if (x.type === 'match') { const n = (x.items || []).length; let c = 0; for (const it of x.items || []) if (a && a[it.id] && a[it.id] === k.answers?.[it.id]) c++; const fr = n ? c / n : 0; per[x.id] = Math.round(fr * 100) / 100; earned += x.points * fr; }
+  }
+  const max = Number(quiz.maxScore) || 5;
+  return { earned: Math.round(earned * 100) / 100, total, per, score: total ? round4(earned / total * max) : 0 };
+}
+const finalScore = a => a?.manualScore != null ? a.manualScore : (a?.score != null ? a.score : null);
+const optText = (x, id) => (x.options || []).find(o => o.id === id)?.text ?? '—';
+function isAnswered(x, v) {
+  if (x.type === 'text') return typeof v === 'string' && v.trim().length >= 2;
+  if (x.type === 'match') return !!v && (x.items || []).every(it => v[it.id]);
+  return v !== undefined && v !== null && v !== '';
+}
+const TEMPLATE = {
+  title: 'عنوان التطبيق',
+  maxScore: 5,
+  durationMin: 20,
+  questions: [
+    { type: 'mcq', text: 'نص سؤال الاختيار من متعدد', options: ['الخيار الأول', 'الخيار الثاني', 'الخيار الثالث', 'الخيار الرابع'], answer: 2, points: 1, explanation: 'سبب الإجابة الصحيحة (اختياري)' },
+    { type: 'tf', text: 'عبارة يحكم الطالب بصحتها أو خطئها', answer: true, points: 1, explanation: '' },
+    { type: 'match', text: 'صنّف كل عبارة بحسب نوعها', options: ['التصنيف الأول', 'التصنيف الثاني', 'التصنيف الثالث'], items: [{ text: 'العبارة الأولى', answer: 1 }, { text: 'العبارة الثانية', answer: 3 }], points: 2, explanation: '' },
+    { type: 'text', text: 'سؤال كتابي: أعد صياغة النص الآتي مع تصحيح العيب…', model: 'الإجابة النموذجية التي تظهر في التقرير' }
+  ]
+};
+function rulesText(email) {
+  const em = String(email || 'teacher@example.com').toLowerCase().replace(/'/g, '');
+  return `rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // بريد حساب الأستاذ (يمكن إضافة أكثر من بريد بينها فاصلة)
+    function teacherEmails() { return ['${em}']; }
+
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.token.get('email', '').lower() in teacherEmails();
+    }
+    function signedIn() { return request.auth != null; }
+    function quizOf(qid) {
+      return get(/databases/$(database)/documents/mrn_quizzes/$(qid)).data;
+    }
+    function platformOpen() {
+      return !exists(/databases/$(database)/documents/mrn_settings/global)
+        || get(/databases/$(database)/documents/mrn_settings/global).data.get('open', true) == true;
+    }
+    function accepting(qid) {
+      let q = quizOf(qid);
+      return q.status == 'open'
+        || (q.status == 'closed'
+            && q.get('closedAt', null) is timestamp
+            && request.time < q.closedAt + duration.value(${GRACE_SEC}, 's'));
+    }
+
+    match /mrn_settings/{doc_id} {
+      allow get: if signedIn();
+      allow write: if isTeacher();
+    }
+    // ربط الرقم الجامعي بجهاز واحد
+    match /mrn_bind/{sid} {
+      allow get: if signedIn();
+      allow list, update, delete: if isTeacher();
+      allow create: if isTeacher()
+        || (signedIn()
+            && request.resource.data.uid == request.auth.uid
+            && getAfter(/databases/$(database)/documents/mrn_devices/$(request.auth.uid)).data.sid == sid);
+    }
+    match /mrn_devices/{uid} {
+      allow get: if isTeacher() || (signedIn() && request.auth.uid == uid);
+      allow list, update, delete: if isTeacher();
+      allow create: if isTeacher()
+        || (signedIn()
+            && request.auth.uid == uid
+            && getAfter(/databases/$(database)/documents/mrn_bind/$(request.resource.data.sid)).data.uid == uid);
+    }
+    // طلبات الدخول من جهاز آخر
+    match /mrn_requests/{rid} {
+      allow get: if isTeacher() || (signedIn() && rid.split('_')[1] == request.auth.uid);
+      allow list, delete: if isTeacher();
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && rid == request.resource.data.sid + '_' + request.auth.uid
+        && request.resource.data.status == 'pending';
+      allow update: if isTeacher()
+        || (signedIn()
+            && resource.data.uid == request.auth.uid
+            && request.resource.data.status == 'pending'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'at', 'ip', 'qid', 'quizTitle']));
+    }
+    match /mrn_groups/{gid} {
+      allow read, write: if isTeacher();
+    }
+    match /mrn_keys/{qid} {
+      allow read, write: if isTeacher();
+    }
+    match /mrn_quizzes/{qid} {
+      allow get: if signedIn();
+      allow list: if isTeacher() || (signedIn() && resource.data.status == 'open');
+      allow create, update, delete: if isTeacher();
+
+      match /attempts/{uid} {
+        allow get: if isTeacher() || (signedIn() && request.auth.uid == uid);
+        allow list, delete: if isTeacher();
+        allow create: if signedIn()
+          && request.auth.uid == uid
+          && platformOpen()
+          && quizOf(qid).status == 'open'
+          && quizOf(qid).get('courseClosed', false) == false
+          && request.resource.data.uid == uid
+          && request.resource.data.status == 'in_progress'
+          && request.resource.data.startedAt == request.time
+          && request.resource.data.sid is string
+          && getAfter(/databases/$(database)/documents/mrn_bind/$(request.resource.data.sid)).data.uid == uid
+          && getAfter(/databases/$(database)/documents/mrn_devices/$(uid)).data.sid == request.resource.data.sid
+          && (quizOf(qid).get('rosterIds', []).size() == 0 || request.resource.data.sid in quizOf(qid).rosterIds)
+          && !request.resource.data.keys().hasAny(['score', 'manualScore', 'auto', 'gradedAt']);
+        allow update: if isTeacher()
+          || (signedIn()
+              && request.auth.uid == uid
+              && resource.data.status == 'in_progress'
+              && request.resource.data.status in ['in_progress', 'submitted']
+              && request.resource.data.diff(resource.data).affectedKeys()
+                   .hasOnly(['answers', 'events', 'counters', 'progress', 'status', 'submittedAt', 'lastSaveAt'])
+              && accepting(qid));
+      }
+
+      match /taken/{nk} {
+        allow get, list: if signedIn();
+        allow create: if signedIn()
+          && request.resource.data.uid == request.auth.uid
+          && platformOpen()
+          && quizOf(qid).status == 'open';
+        allow delete: if isTeacher();
+      }
+    }
+  }
+}`;
+}
+
+/* =========================================================
+   الحالة العامة والإقلاع
+   ========================================================= */
+const S = {
+  mode: 'none', db: null, view: '', uid: null,
+  quiz: null, attempt: null, qmap: {}, answers: {}, events: [], counters: {},
+  unsub: [], timerInt: null, saveT: null, submitting: false, locked: false, selName: '',
+  adm: { tab: 'quizzes', view: 'home', groups: [], quizzes: [], settings: { open: true }, unsub: [], err: '' },
+  mon: null, teacher: null
+};
+const app = $('#app');
+
+function cleanup() {
+  S.unsub.forEach(f => { try { f && f(); } catch (e) {} }); S.unsub = [];
+  clearInterval(S.timerInt); S.timerInt = null;
+  clearTimeout(S.saveT); S.saveT = null;
+  document.body.classList.remove('away');
+}
+function demoBar() {
+  return S.mode === 'demo' ? `<div class="demo-bar">وضع تجريبي: البيانات محفوظة في هذا المتصفح فقط <button class="btn sm" data-act="exit-demo">الخروج منه</button></div>` : '';
+}
+
+async function boot() {
+  const H = parseHash();
+  if (H.demo) lsSet('mrn_demo', 1);
+  if (H.live) lsDel('mrn_demo');
+  if (H.c) { const c = decodeCfg(H.c); if (c) { RUNTIME_CFG = c; lsSet('mrn_cfg', c); lsDel('mrn_demo'); } }
+  S.isAdmin = !!H.admin;
+  history.replaceState(null, '', location.pathname + location.search + (S.isAdmin ? '#admin' : ''));
+  addEventListener('hashchange', () => location.reload());
+  const demo = !!lsGet('mrn_demo');
+  const cfg = readCfg();
+  if (demo) { S.mode = 'demo'; S.db = new MockDB(); }
+  else if (cfg) {
+    S.mode = 'live'; S.db = new FireDB();
+    try { await S.db.init(cfg); }
+    catch (e) { console.error(e); return renderFatal('تعذر الاتصال بقاعدة البيانات', errMsg(e)); }
+  }
+  if (S.isAdmin) adminBoot(); else studentBoot();
+}
+function renderFatal(title, msg) {
+  app.innerHTML = `<div class="wrap"><div class="card mt2 center"><h2>${esc(title)}</h2><p class="muted">${esc(msg)}</p><div class="row" style="justify-content:center"><button class="btn" onclick="location.reload()">إعادة المحاولة</button>${S.isAdmin && !DEFAULT_CONFIG ? '<button class="btn soft-danger" data-act="clear-cfg">مسح إعدادات الاتصال</button>' : ''}</div></div></div>`;
+}
+
+/* =========================================================
+   صفحة الطالب
+   ========================================================= */
+function studentBoot() {
+  if (S.mode === 'none') return renderNoConfig();
+  renderLanding();
+}
+function brandHero() {
+  return `<div class="hero"><div class="logo">م</div><h1>${APP.name}</h1><div class="muted">${APP.tagline}</div></div>`;
+}
+function footer() {
+  return `<div class="foot"><button class="btn link" data-act="teacher">دخول الأستاذ</button><div>تطوير: ${esc(APP.dev)}</div></div>`;
+}
+function renderNoConfig() {
+  S.view = 'noconfig';
+  app.innerHTML = `<div class="wrap">${brandHero()}<div class="card center mt2"><h2>افتح رابط الأستاذ</h2><p class="muted">ادخل المنصة من الرابط الذي أرسله الأستاذ، أو امسح رمز QR المعروض في القاعة.</p></div>
+  <div class="center mt2"><button class="btn sm ghost" data-act="try-demo">تجربة المنصة (وضع تجريبي)</button></div>${footer()}</div>`;
+}
+function myList() { return lsGet('mrn_my', []); }
+function rememberMine(q, name) { const L = myList().filter(x => x.qid !== q.id); L.unshift({ qid: q.id, title: q.title, name, at: Date.now() }); lsSet('mrn_my', L.slice(0, 12)); }
+function dropMine(qid) { lsSet('mrn_my', myList().filter(x => x.qid !== qid)); }
+
+async function renderLanding() {
+  if ($('#modal-root').firstChild) closeModal();
+  cleanup(); S.view = 'landing'; S.quiz = null; S.attempt = null; S.selName = '';
+  const mine = myList().slice(0, 5);
+  app.innerHTML = `${demoBar()}<div class="wrap">${brandHero()}
+    <div class="card mt2" id="pinCard">
+      <div id="platMsg"></div>
+      <label for="pin" class="center" style="display:block;font-weight:700">أدخل رمز الدخول (${PIN_LEN} أرقام)</label>
+      <input id="pin" class="pin-input" inputmode="numeric" pattern="[0-9]*" maxlength="${PIN_LEN}" autocomplete="off" placeholder="${'•'.repeat(PIN_LEN)}" aria-label="رمز الدخول">
+      <div class="pin-err" id="pinErr"></div>
+      <button class="btn pri block lg" data-act="pin-go">دخول</button>
+    </div>
+    ${mine.length ? `<div class="card"><h3>مشاركاتك السابقة</h3><div class="muted small">لرؤية نتيجتك إذا أعلنها الأستاذ.</div>${mine.map(m => `<button class="mine" data-act="mine" data-q="${esc(m.qid)}"><span><b>${esc(m.title)}</b><br><small class="muted">${esc(m.name)}</small></span><span class="chip">عرض</span></button>`).join('')}</div>` : ''}
+    ${footer()}</div>`;
+  const pin = $('#pin');
+  pin.addEventListener('input', () => { pin.value = toLatin(pin.value).replace(/\D/g, '').slice(0, PIN_LEN); $('#pinErr').textContent = ''; if (pin.value.length === PIN_LEN) enterPin(pin.value); });
+  pin.addEventListener('keydown', e => { if (e.key === 'Enter') enterPin(pin.value); });
+  setTimeout(() => pin.focus(), 50);
+  try {
+    S.uid = await S.db.ensureStudent();
+    const st = await S.db.getSettings();
+    if (st.open === false && $('#platMsg')) $('#platMsg').innerHTML = `<div class="notice warn mb center"><b>المنصة مغلقة حالياً</b><br><span class="small">${esc(st.msg || 'سيفتحها الأستاذ وقت التطبيق.')}</span></div>`;
+  } catch (e) { console.error(e); if ($('#pinErr')) $('#pinErr').textContent = errMsg(e); }
+}
+async function enterPin(raw) {
+  if (S.view !== 'landing' || S.pinBusy) return;
+  const pin = toLatin(raw).replace(/\D/g, '');
+  const err = m => { const el = $('#pinErr'); if (el) el.textContent = m; };
+  if (pin.length !== PIN_LEN) return err(`اكتب الرمز من ${PIN_LEN} أرقام`);
+  S.pinBusy = true;
+  await busy(async () => {
+    S.uid = await S.db.ensureStudent();
+    const st = await S.db.getSettings();
+    if (st.open === false) return err('المنصة مغلقة حالياً');
+    const q = await S.db.findOpenQuizByPin(pin);
+    if (!q) return err('لا يوجد نموذج مفتوح بهذا الرمز');
+    if (q.courseClosed) return err('هذه المادة مغلقة حالياً');
+    S.quiz = q;
+    const a = await S.db.getAttempt(q.id, S.uid);
+    if (a) { rememberMine(q, a.name); if (a.status === 'in_progress') return resumeQuiz(a); return showDone(q.id); }
+    renderNameStep();
+  });
+  S.pinBusy = false;
+}
+async function openMine(qid) {
+  await busy(async () => {
+    S.uid = await S.db.ensureStudent();
+    const q = await S.db.getQuiz(qid);
+    if (!q) { dropMine(qid); toast('لم يعد هذا النموذج موجوداً', 'warn'); return renderLanding(); }
+    S.quiz = q;
+    const a = await S.db.getAttempt(qid, S.uid);
+    if (!a) return toast('لا توجد مشاركة لك في هذا النموذج من هذا الجهاز', 'warn');
+    if (a.status === 'in_progress' && q.status === 'open') return resumeQuiz(a);
+    showDone(qid);
+  });
+}
+function renderNameStep() { return renderIdStep(); }
+async function renderIdStep(prefill) {
+  cleanup(); S.view = 'name'; S.selName = '';
+  const q = S.quiz;
+  const roster = rosterOf(q); const hasIds = roster.some(x => x.id);
+  let locked = '';
+  try { const dv = await S.db.getDevice(S.uid); if (dv?.sid) locked = dv.sid; } catch (e) {}
+  if (!locked && lsGet('mrn_sid_' + S.uid)) locked = String(lsGet('mrn_sid_' + S.uid));
+  if (S.view !== 'name') return;
+  const val = prefill || locked;
+  const nQ = q.questions.length;
+  app.innerHTML = `${demoBar()}<div class="wrap">
+    <div class="card mt">
+      <div class="row between"><div><div class="qc-title">${esc(q.title)}</div><div class="qc-meta">${esc(q.groupName || '')}</div></div><button class="btn sm ghost" data-act="back-landing">رجوع</button></div>
+      <div class="row mt">
+        <span class="chip">${nQ} ${nQ > 10 ? 'سؤالاً' : 'أسئلة'}</span>
+        ${q.durationMin > 0 ? `<span class="chip">المدة ${q.durationMin} دقيقة</span>` : ''}
+        ${q.showScore ? `<span class="chip pri">الدرجة من ${fmtNum(q.maxScore)}</span>` : ''}
+      </div>
+    </div>
+    <div class="card">
+      <h3>الرقم الجامعي</h3>
+      <input class="input" id="sidIn" inputmode="numeric" pattern="[0-9]*" maxlength="12" dir="ltr" autocomplete="off" placeholder="الرقم الجامعي" value="${esc(val)}" ${locked && !prefill ? 'readonly' : ''} style="font-size:1.3rem;letter-spacing:.08em;text-align:center;font-weight:700">
+      ${locked && !prefill ? `<div class="hint">هذا الجهاز مسجل بهذا الرقم، ولا يُدخل منه برقم آخر. <button class="btn link" data-act="not-my-id">ليس رقمي</button></div>` : '<div class="hint">يرتبط رقمك بهذا الجهاز من أول دخول.</div>'}
+      ${hasIds ? '' : '<label class="field"><span>الاسم الثلاثي</span><input class="input" id="nameFree" maxlength="80" autocomplete="off" placeholder="الاسم الثلاثي"></label>'}
+      <div id="sidMsg" class="mt"></div>
+    </div>
+    <div class="card"><div class="notice warn"><b>قبل أن تبدأ</b><ul>
+      <li>النسخ واللصق ممنوعان.</li>
+      <li>مغادرة الصفحة أو التبديل إلى تطبيق آخر تُسجَّل وتظهر للأستاذ بمدتها.</li>
+      <li>اسمك ورقمك يظهران على الشاشة طوال الحل.</li>
+      <li>لا يمكن تعديل الإجابات بعد التسليم.</li></ul></div>
+      <button class="btn pri block lg mt" data-act="start" id="startBtn" disabled>ابدأ الحل</button>
+    </div></div>`;
+  const sidIn = $('#sidIn'), msg = $('#sidMsg'), btn = $('#startBtn');
+  const check = () => {
+    sidIn.value = normSid(sidIn.value).slice(0, 12);
+    const sid = sidIn.value; S.selSid = ''; S.selName = ''; btn.disabled = true; msg.innerHTML = '';
+    if (!validSid(sid)) return;
+    if (hasIds) {
+      const st = roster.find(x => x.id === sid);
+      if (!st) { msg.innerHTML = '<div class="notice danger small">هذا الرقم غير موجود في قائمة طلاب هذا النموذج. تأكد منه.</div>'; return; }
+      S.selSid = sid; S.selName = st.name; btn.disabled = false;
+      msg.innerHTML = `<div class="notice ok"><b>${esc(st.name)}</b><div class="small">تأكد أن هذا اسمك قبل أن تبدأ.</div></div>`;
+    } else {
+      const nm = ($('#nameFree')?.value || '').replace(/\s+/g, ' ').trim();
+      S.selSid = sid; S.selName = nm; btn.disabled = nm.split(' ').length < 2;
+    }
+  };
+  sidIn.addEventListener('input', check); $('#nameFree')?.addEventListener('input', check);
+  check();
+}
+function buildOrder(q) {
+  const ids = q.questions.map(x => x.id); const o = {}, it = {};
+  for (const x of q.questions) {
+    if (x.options && q.shuffleO && x.type === 'mcq') o[x.id] = shuffle(x.options.map(p => p.id));
+    if (x.items && q.shuffleO) it[x.id] = shuffle(x.items.map(p => p.id));
+  }
+  return { q: q.shuffleQ ? shuffle(ids) : ids, o, i: it };
+}
+function deviceInfo() {
+  const ua = navigator.userAgent;
+  const mobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+  const os = /iPhone|iPad|iPod/.test(ua) ? 'iOS' : /Android/.test(ua) ? 'Android' : /Windows/.test(ua) ? 'Windows' : /Mac OS/.test(ua) ? 'macOS' : /Linux/.test(ua) ? 'Linux' : 'أخرى';
+  const br = /Edg\//.test(ua) ? 'Edge' : /SamsungBrowser/.test(ua) ? 'Samsung' : /CriOS|Chrome\//.test(ua) ? 'Chrome' : /FxiOS|Firefox\//.test(ua) ? 'Firefox' : /Safari\//.test(ua) ? 'Safari' : 'متصفح';
+  return `${mobile ? 'جوال' : 'حاسب'} · ${os} · ${br}`;
+}
+async function startQuiz() {
+  const sid = S.selSid, name = (S.selName || '').trim();
+  if (!validSid(sid) || name.length < 3) return toast('أدخل رقمك الجامعي أولاً', 'warn');
+  const q = S.quiz, nk = sid;
+  await busy(async () => {
+    const st = await S.db.getSettings();
+    if (st.open === false) throw E('quiz-closed');
+    const fresh = await S.db.getQuiz(q.id);
+    if (!fresh || fresh.status !== 'open' || fresh.courseClosed) throw E('quiz-closed');
+    const ids = fresh.rosterIds || [];
+    if (ids.length && !ids.includes(sid)) throw E('not-in-roster');
+    const [bind, dev] = await Promise.all([S.db.getBind(sid), S.db.getDevice(S.uid)]);
+    if ((bind && bind.uid !== S.uid) || (dev && dev.sid !== sid)) { S.quiz = fresh; return requestFlow(sid, name, bind, dev); }
+    if (await S.db.isTaken(q.id, nk)) throw E('name-taken');
+    const ip = await getIP();
+    const order = buildOrder(fresh);
+    const data = { name, sid, nameKey: nk, ip, device: deviceInfo(), order, answers: {}, events: [{ t: Date.now(), k: 'start', d: null }], counters: {}, progress: 0 };
+    await S.db.startAttempt(q.id, S.uid, data, nk, { bind: !bind, device: !dev });
+    lsSet('mrn_sid_' + S.uid, sid);
+    localStorage.setItem('mrn_start_' + q.id, String(Date.now()));
+    rememberMine(fresh, name);
+    S.quiz = fresh;
+    S.attempt = { ...data, uid: S.uid, status: 'in_progress' };
+    S.answers = {}; S.events = data.events.slice(); S.counters = {};
+    renderQuiz();
+  });
+}
+async function requestFlow(sid, name, bind, dev) {
+  const q = S.quiz;
+  const reason = bind && bind.uid !== S.uid ? 'id' : 'device';
+  const ip = await getIP();
+  await S.db.putRequest({ sid, uid: S.uid, name, ip, device: deviceInfo(), reason, otherSid: dev && dev.sid !== sid ? dev.sid : '', qid: q.id, quizTitle: q.title });
+  cleanup(); S.view = 'wait';
+  app.innerHTML = `${demoBar()}<div class="wrap"><div class="card mt2 center" id="waitCard">
+    <div class="done-ic" style="background:var(--warn-soft);color:var(--warn)">!</div>
+    <h2>بانتظار موافقة الأستاذ</h2>
+    <p>${reason === 'id' ? 'رقمك الجامعي مسجل على جهاز أو متصفح آخر.' : `هذا الجهاز مسجل برقم آخر (<span dir="ltr">${esc(dev?.sid || '')}</span>).`}</p>
+    <p class="muted small">أُرسل طلبك إلى الأستاذ، وستُفتح لك الصفحة تلقائياً عند موافقته. لا تغلق الصفحة.</p>
+    <div class="spinner"></div>
+    <div class="small muted"><span dir="ltr">${esc(sid)}</span> · ${esc(name)}</div>
+    <button class="btn ghost mt" data-act="back-landing">رجوع</button></div></div>`;
+  let b = null, d = null, done = false;
+  const go = () => { if (done || S.view !== 'wait') return; if (b?.uid === S.uid && d?.sid === sid) { done = true; lsSet('mrn_sid_' + S.uid, sid); toast('وافق الأستاذ، تفضل', 'ok'); renderIdStep(); } };
+  S.unsub.push(S.db.watchBind(sid, x => { b = x; go(); }, () => {}));
+  S.unsub.push(S.db.watchDevice(S.uid, x => { d = x; go(); }, () => {}));
+  S.unsub.push(S.db.watchRequest(sid + '_' + S.uid, r => { if (r?.status === 'rejected' && S.view === 'wait') { const c = $('#waitCard'); if (c) c.innerHTML = `<div class="done-ic" style="background:var(--danger-soft);color:var(--danger)">✕</div><h2>لم يوافق الأستاذ</h2><p class="muted">راجع الأستاذ مباشرة.</p><button class="btn ghost mt" data-act="back-landing">رجوع</button>`; } }, () => {}));
+}
+function readDraft(qid) { return lsGet('mrn_draft_' + qid + '_' + S.uid); }
+function saveDraftLocal() { if (S.quiz && S.uid) lsSet('mrn_draft_' + S.quiz.id + '_' + S.uid, { answers: S.answers, events: S.events.slice(-300), counters: S.counters, t: Date.now() }); }
+function clearDraft() { if (S.quiz && S.uid) lsDel('mrn_draft_' + S.quiz.id + '_' + S.uid); }
+function resumeQuiz(a) {
+  S.attempt = a;
+  const dr = readDraft(S.quiz.id);
+  const src = dr || a;
+  S.answers = clone(src.answers || {}); S.events = clone(src.events || []); S.counters = clone(src.counters || {});
+  if (!localStorage.getItem('mrn_start_' + S.quiz.id) && toMs(a.startedAt)) localStorage.setItem('mrn_start_' + S.quiz.id, String(toMs(a.startedAt)));
+  renderQuiz();
+  logEvent('resume');
+}
+function watermarkURL(text) {
+  const t = esc(text);
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='260' height='150'><text x='130' y='80' text-anchor='middle' transform='rotate(-22 130 75)' font-family='Tahoma, sans-serif' font-size='17' fill='rgba(128,128,128,0.23)'>${t}</text></svg>`;
+  return `url("data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}")`;
+}
+function qCard(x, i, order) {
+  let body = '';
+  if (x.type === 'mcq') {
+    const ids = order.o?.[x.id] || x.options.map(o => o.id);
+    body = `<div class="opts">${ids.map(id => `<button type="button" class="opt" data-act="pick" data-q="${x.id}" data-v="${id}"><span class="dot"></span><span class="ns">${nl(optText(x, id))}</span></button>`).join('')}</div>`;
+  } else if (x.type === 'tf') {
+    body = `<div class="tf"><button type="button" class="opt" data-act="tf" data-q="${x.id}" data-v="true"><span class="dot"></span>صح</button><button type="button" class="opt" data-act="tf" data-q="${x.id}" data-v="false"><span class="dot"></span>خطأ</button></div>`;
+  } else if (x.type === 'match') {
+    const oids = x.options.map(o => o.id);
+    const iids = order.i?.[x.id] || x.items.map(t => t.id);
+    const im = Object.fromEntries(x.items.map(t => [t.id, t.text]));
+    body = iids.map((iid, k) => `<div class="mrow"><div class="mtext ns"><b>${k + 1})</b> ${nl(im[iid])}</div><div class="mchips">${oids.map(oid => `<button type="button" class="mchip" data-act="match" data-q="${x.id}" data-i="${iid}" data-v="${oid}">${esc(optText(x, oid))}</button>`).join('')}</div></div>`).join('');
+  } else if (x.type === 'text') {
+    body = `<textarea class="textarea ans" data-q="${x.id}" rows="4" placeholder="اكتب إجابتك هنا…" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea><div class="hint">اكتب بأسلوبك؛ يطّلع الأستاذ على إجابتك.</div>`;
+  }
+  return `<section class="q-card" id="card-${x.id}"><div class="q-head"><span class="q-num">${i + 1}</span><span class="q-type">${TYPE_LABEL[x.type] || ''}</span></div><div class="q-text ns">${nl(x.text)}</div>${body}</section>`;
+}
+function renderQuiz() {
+  cleanup(); S.view = 'quiz'; S.locked = false; S.submitting = false;
+  const q = S.quiz, a = S.attempt;
+  const order = a.order || buildOrder(q);
+  S.qmap = Object.fromEntries(q.questions.map(x => [x.id, x]));
+  const list = (order.q || []).map(id => S.qmap[id]).filter(Boolean);
+  for (const x of q.questions) if (!list.includes(x)) list.push(x);
+  app.innerHTML = `${demoBar()}
+  <div class="qtop"><div class="qtop-in"><div><div class="qtop-title">${esc(q.title)}</div><div class="qtop-name">${esc(a.name)}${a.sid ? ' · <span dir="ltr">' + esc(a.sid) + '</span>' : ''}</div></div>
+    <div class="qtop-side"><div><span class="timer" id="timer" ${q.durationMin > 0 ? '' : 'hidden'}>--:--</span><div class="save-st" id="saveSt"></div></div><span class="prog" id="progTxt">0/${list.length}</span></div></div>
+    <div class="progbar"><i id="progBar"></i></div></div>
+  <div class="wrap" id="quizBody">
+    ${list.map((x, i) => qCard(x, i, order)).join('')}
+    <div class="submit-zone"><button class="btn pri block lg" data-act="submit">تسليم الإجابات</button></div>
+  </div>
+  <div class="wm" style="background-image:${watermarkURL(a.name + (a.sid ? ' · ' + a.sid : ''))}"></div>
+  <div class="away-ov"><div><div class="done-ic" style="background:var(--warn-soft);color:var(--warn)">!</div><b>عُد إلى صفحة النموذج</b><div class="muted small">خروجك من الصفحة يُسجَّل ويظهر للأستاذ.</div></div></div>`;
+  for (const x of q.questions) markSel(x.id);
+  $$('textarea.ans').forEach(ta => {
+    ta.value = S.answers[ta.dataset.q] || ''; ta._prev = ta.value;
+    ta.addEventListener('input', () => {
+      const d = ta.value.length - (ta._prev || '').length;
+      if (d > BULK_LIMIT) { ta.value = ta._prev; logEvent('bulk', d); toast('إدخال نص كبير دفعة واحدة غير مسموح', 'danger'); return; }
+      ta._prev = ta.value; S.answers[ta.dataset.q] = ta.value; changed(ta.dataset.q);
+    });
+  });
+  updateProgress(); startTimer();
+  S.unsub.push(S.db.watchQuiz(q.id, nq => {
+    if (!nq || S.view !== 'quiz') return;
+    S.quiz = { ...S.quiz, ...nq };
+    if (nq.status !== 'open' || nq.courseClosed) { toast('أغلق الأستاذ النموذج، وسُلّمت إجاباتك تلقائياً', 'warn', 5000); submitFlow(true, 'closed'); }
+  }, () => {}));
+}
+function markSel(qid) {
+  const card = document.getElementById('card-' + qid); if (!card) return;
+  const v = S.answers[qid]; const x = S.qmap[qid];
+  card.querySelectorAll('[data-act=pick]').forEach(b => b.classList.toggle('sel', b.dataset.v === v));
+  card.querySelectorAll('[data-act=tf]').forEach(b => b.classList.toggle('sel', v === true || v === false ? String(v) === b.dataset.v : false));
+  card.querySelectorAll('[data-act=match]').forEach(b => b.classList.toggle('sel', !!v && v[b.dataset.i] === b.dataset.v));
+  card.classList.toggle('done', !!x && isAnswered(x, v));
+}
+function answeredCount() { return (S.quiz?.questions || []).filter(x => isAnswered(x, S.answers[x.id])).length; }
+function updateProgress() {
+  const n = answeredCount(), t = S.quiz.questions.length;
+  const pt = $('#progTxt'); if (pt) pt.textContent = n + '/' + t;
+  const pb = $('#progBar'); if (pb) pb.style.width = (t ? n / t * 100 : 0) + '%';
+}
+function setSave(st) { const el = $('#saveSt'); if (!el) return; el.className = 'save-st' + (st === 'err' ? ' err' : ''); el.textContent = st === 'saving' ? 'يحفظ…' : st === 'ok' ? 'محفوظ ✓' : st === 'err' ? 'تعذر الحفظ' : ''; }
+function changed(qid) { if (qid) markSel(qid); updateProgress(); saveDraftLocal(); scheduleRemote(); }
+function scheduleRemote() { if (S.locked) return; clearTimeout(S.saveT); S.saveT = setTimeout(() => pushSave().catch(() => {}), 1300); setSave('saving'); }
+async function pushSave(extra = {}) {
+  clearTimeout(S.saveT); S.saveT = null;
+  if (!S.quiz || !S.attempt || (S.locked && !extra.status)) return;
+  const patch = { answers: S.answers, events: S.events.slice(-300), counters: S.counters, progress: answeredCount(), lastSaveAt: SERVER_TS, ...extra };
+  try { await S.db.saveAttempt(S.quiz.id, S.uid, patch); setSave('ok'); }
+  catch (e) { setSave('err'); throw e; }
+}
+function logEvent(k, d = null, count = true) {
+  if (S.view !== 'quiz' || S.locked) return;
+  S.events.push({ t: Date.now(), k, d: d == null ? null : d });
+  if (S.events.length > 300) S.events.splice(0, S.events.length - 300);
+  if (count) S.counters[k] = (S.counters[k] || 0) + 1;
+  saveDraftLocal(); scheduleRemote();
+}
+function startTimer() {
+  const q = S.quiz; if (!(q.durationMin > 0)) return;
+  const start = Number(localStorage.getItem('mrn_start_' + q.id)) || toMs(S.attempt.startedAt) || Date.now();
+  const end = start + q.durationMin * 60000;
+  const tick = () => {
+    const el = $('#timer'); if (!el || S.view !== 'quiz') return;
+    const left = end - Date.now();
+    if (left <= 0) { el.textContent = '00:00'; clearInterval(S.timerInt); toast('انتهى الوقت، وسُلّمت إجاباتك', 'warn', 4000); submitFlow(true, 'timeup'); return; }
+    const m = Math.floor(left / 60000), s = Math.floor(left % 60000 / 1000);
+    el.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+    el.classList.toggle('low', left < 60000);
+  };
+  tick(); S.timerInt = setInterval(tick, 1000);
+}
+async function submitFlow(auto = false, reason = '') {
+  if (S.submitting || S.view !== 'quiz') return;
+  const total = S.quiz.questions.length, done = answeredCount();
+  if (!auto) {
+    const ok = await confirmBox('تسليم الإجابات', `أجبت عن <b>${done}</b> من <b>${total}</b>.${done < total ? '<br>بقيت أسئلة دون إجابة.' : ''}<br>لا يمكن تعديل الإجابات بعد التسليم.`, 'تسليم');
+    if (!ok || S.view !== 'quiz') return;
+  }
+  S.submitting = true;
+  if (reason) { S.events.push({ t: Date.now(), k: reason, d: null }); }
+  S.events.push({ t: Date.now(), k: 'submit', d: null });
+  S.locked = true;
+  try {
+    await pushSave({ status: 'submitted', submittedAt: SERVER_TS });
+    clearDraft(); showDone(S.quiz.id, true);
+  } catch (e) {
+    if (auto) { const qz = S.quiz; showDone(qz.id); setTimeout(() => { if (S.quiz && S.quiz.id === qz.id) pushSave({ status: 'submitted', submittedAt: SERVER_TS }).then(clearDraft).catch(() => {}); }, 2500); return; }
+    S.submitting = false; S.locked = false; toast('تعذر التسليم: ' + errMsg(e), 'danger', 6000);
+  }
+}
+async function showDone(qid) {
+  if ($('#modal-root').firstChild) closeModal();
+  cleanup(); S.view = 'done';
+  app.innerHTML = `${demoBar()}<div class="wrap"><div class="card mt2 center" id="doneCard"><div class="spinner"></div></div><div id="review"></div><div class="center mt2"><button class="btn ghost" data-act="back-landing">العودة للبداية</button></div></div>`;
+  let quiz = null, att = null;
+  const draw = () => {
+    const card = $('#doneCard'); if (!card) return;
+    if (!quiz || !att) { card.innerHTML = quiz === null && att === null ? '<div class="spinner"></div>' : '<p class="muted">لم نعثر على مشاركتك.</p>'; return; }
+    if (att.status === 'in_progress' && quiz.status === 'open' && !quiz.courseClosed) { S.quiz = quiz; return resumeQuiz(att); }
+    const fin = finalScore(att);
+    let sc;
+    if (quiz.showScore) sc = fin != null ? `<div class="score-big"><b>${fmtNum(fin)}</b><span>من ${fmtNum(quiz.maxScore)}</span></div>` : '<p class="muted">يجري التصحيح… ستظهر درجتك هنا تلقائياً.</p>';
+    else sc = '<p class="muted">سيعلن الأستاذ النتائج لاحقاً.</p>';
+    card.innerHTML = `<div class="done-ic">✓</div><h2>${att.status === 'submitted' ? 'تم التسليم' : 'أُغلق النموذج'}</h2><div><b>${esc(att.name)}</b></div><div class="muted small">${esc(quiz.title)}${toMs(att.submittedAt) ? ' · ' + clock(toMs(att.submittedAt)) : ''}</div>${sc}`;
+    const rv = $('#review');
+    if (rv) rv.innerHTML = quiz.showAnswers && quiz.revealed ? `<div class="card"><h3>مراجعة الإجابات</h3>${reviewHTML(quiz, att.answers || {}, quiz.revealed)}</div>` : '';
+  };
+  S.unsub.push(S.db.watchQuiz(qid, q => { quiz = q || false; draw(); }, e => toast(errMsg(e), 'danger')));
+  S.unsub.push(S.db.watchAttempt(qid, S.uid, a => { att = a || false; draw(); }, e => toast(errMsg(e), 'danger')));
+}
+function reviewHTML(quiz, ans, key) {
+  return quiz.questions.map((x, i) => {
+    const k = key[x.id] || {}; const a = ans[x.id]; let body = '';
+    if (x.type === 'mcq') { const ok = a === k.answer; body = `<div class="rv-a">إجابتك: <span class="${ok ? 'ok-t' : 'bad-t'}">${esc(a ? optText(x, a) : 'لم تُجب')}</span>${ok ? ' ✓' : `<br>الصحيحة: <span class="ok-t">${esc(optText(x, k.answer))}</span>`}</div>`; }
+    else if (x.type === 'tf') { const ok = a === k.answer; const t = v => v === true ? 'صح' : v === false ? 'خطأ' : 'لم تُجب'; body = `<div class="rv-a">إجابتك: <span class="${ok ? 'ok-t' : 'bad-t'}">${t(a)}</span>${ok ? ' ✓' : ` — الصحيحة: <span class="ok-t">${t(k.answer)}</span>`}</div>`; }
+    else if (x.type === 'match') { body = (x.items || []).map((it, j) => { const mine = a?.[it.id]; const ok = mine && mine === k.answers?.[it.id]; return `<div class="rv-a">${j + 1}) ${esc(it.text)}<br>إجابتك: <span class="${ok ? 'ok-t' : 'bad-t'}">${esc(mine ? optText(x, mine) : 'لم تُجب')}</span>${ok ? ' ✓' : ` — الصحيحة: <span class="ok-t">${esc(optText(x, k.answers?.[it.id]))}</span>`}</div>`; }).join(''); }
+    else if (x.type === 'text') { body = `<div class="rv-a">إجابتك: ${nl(a || 'لم تُجب')}</div>${k.model ? `<div class="rv-a">الإجابة النموذجية: <span class="ok-t">${nl(k.model)}</span></div>` : ''}`; }
+    return `<div class="rv"><div class="rv-q">${i + 1}) ${nl(x.text)}</div>${body}${k.explanation ? `<div class="rv-a muted">${nl(k.explanation)}</div>` : ''}</div>`;
+  }).join('');
+}
+
+/* ---------- الحماية من الغش (تعمل أثناء الحل فقط) ---------- */
+let awaySince = null, lastPrint = 0;
+const inQuiz = () => S.view === 'quiz' && !S.locked;
+function goneAway() { if (!inQuiz() || awaySince) return; awaySince = Date.now(); document.body.classList.add('away'); }
+function cameBack() {
+  if (!awaySince) return;
+  const ms = Date.now() - awaySince; awaySince = null; document.body.classList.remove('away');
+  if (!inQuiz() || ms < 800) return;
+  S.counters.leave = (S.counters.leave || 0) + 1;
+  S.counters.awayMs = (S.counters.awayMs || 0) + ms;
+  logEvent('leave', Math.round(ms / 1000), false);
+  toast(`سُجّل خروجك من الصفحة (${secs(ms)})`, 'warn', 3500);
+}
+function onPrintKey() {
+  if (!inQuiz() || Date.now() - lastPrint < 1500) return;
+  lastPrint = Date.now(); logEvent('print');
+  try { navigator.clipboard?.writeText(' ').catch(() => {}); } catch (e) {}
+  const f = document.createElement('div'); f.className = 'flash'; document.body.appendChild(f); setTimeout(() => f.remove(), 1200);
+  toast('لقطة الشاشة غير مسموحة وقد سُجّلت', 'danger', 3500);
+}
+document.addEventListener('visibilitychange', () => document.hidden ? goneAway() : cameBack());
+addEventListener('blur', goneAway);
+addEventListener('focus', cameBack);
+addEventListener('pagehide', goneAway);
+document.addEventListener('paste', e => { if (!inQuiz()) return; e.preventDefault(); logEvent('paste'); toast('اللصق غير مسموح، وسُجّلت المحاولة', 'danger'); }, true);
+document.addEventListener('copy', e => { if (!inQuiz()) return; e.preventDefault(); logEvent('copy'); toast('النسخ غير مسموح', 'danger'); }, true);
+document.addEventListener('cut', e => { if (!inQuiz()) return; e.preventDefault(); logEvent('cut'); toast('القص غير مسموح', 'danger'); }, true);
+document.addEventListener('drop', e => { if (!inQuiz()) return; e.preventDefault(); logEvent('drop'); toast('سحب النصوص غير مسموح', 'danger'); }, true);
+document.addEventListener('dragstart', e => { if (inQuiz()) e.preventDefault(); }, true);
+document.addEventListener('contextmenu', e => { if (!inQuiz()) return; e.preventDefault(); logEvent('menu'); }, true);
+document.addEventListener('selectstart', e => { if (!inQuiz()) return; const t = e.target.nodeType === 3 ? e.target.parentElement : e.target; if (!t?.closest?.('textarea')) e.preventDefault(); }, true);
+document.addEventListener('beforeinput', e => {
+  if (!inQuiz()) return;
+  const t = e.inputType || '';
+  if (/^insertFrom(Paste|Drop|PasteAsQuotation|YankKill)$/.test(t)) { e.preventDefault(); logEvent(t === 'insertFromDrop' ? 'drop' : 'paste'); toast('اللصق غير مسموح، وسُجّلت المحاولة', 'danger'); return; }
+  if (e.data && e.data.length > BULK_LIMIT && /^insert/.test(t)) { e.preventDefault(); logEvent('bulk', e.data.length); toast('إدخال نص كبير دفعة واحدة غير مسموح', 'danger'); }
+}, true);
+document.addEventListener('keydown', e => {
+  if (!inQuiz()) return;
+  const k = (e.key || '').toLowerCase();
+  if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x', 'p', 's', 'u', 'insert'].includes(k)) { e.preventDefault(); logEvent('keys', k); }
+  else if (e.shiftKey && k === 'insert') { e.preventDefault(); logEvent('paste'); }
+  if (e.metaKey && e.shiftKey && ['3', '4', '5', 's'].includes(k)) onPrintKey();
+  if (k === 'printscreen') onPrintKey();
+}, true);
+document.addEventListener('keyup', e => { if (inQuiz() && ((e.key || '').toLowerCase() === 'printscreen' || e.keyCode === 44)) onPrintKey(); }, true);
+addEventListener('beforeunload', e => { if (inQuiz()) { saveDraftLocal(); e.preventDefault(); e.returnValue = ''; } });
+
+/* =========================================================
+   لوحة الأستاذ
+   ========================================================= */
+function adminBoot() {
+  if (S.mode === 'none') return renderSetup();
+  S.db.onTeacher(t => {
+    const was = S.teacher?.email; S.teacher = t;
+    if (t) { if (was !== t.email || !S.adm.started) startAdmin(); }
+    else { stopAdmin(); renderLogin(); }
+  });
+}
+function adminTop() {
+  const open = S.adm.settings.open !== false;
+  return `${demoBar()}<div class="atop"><div class="wrap wide">
+    <div class="brand"><div class="logo">م</div><div><b>${APP.name}</b><small>لوحة الأستاذ</small></div></div>
+    <div class="row">
+      <div class="plat"><span class="chip ${open ? 'ok' : 'danger'}">${open ? '<span class="live-dot"></span> المنصة مفتوحة' : 'المنصة مغلقة'}</span>
+      <button class="btn sm ${open ? 'soft-danger' : 'pri'}" data-act="platform" data-open="${open ? '0' : '1'}">${open ? 'إغلاق المنصة' : 'فتح المنصة'}</button></div>
+      <button class="btn sm ghost" data-act="student-page">صفحة الطالب</button>
+      <button class="btn sm ghost" data-act="logout" title="${esc(S.teacher?.email || '')}">خروج</button>
+    </div></div></div>`;
+}
+function renderSetup() {
+  S.view = 'setup';
+  app.innerHTML = `<div class="wrap"><div class="brand mt2"><div class="logo">م</div><div><b>${APP.name}</b><small>إعداد لوحة الأستاذ</small></div></div>
+  <div class="card mt2"><h2>اربط المنصة بقاعدة بياناتك</h2>
+    <p class="muted small">الصق إعدادات مشروع فايربيز (firebaseConfig). تُحفظ في هذا المتصفح فقط، ولا تُكتب في ملف المنصة.</p>
+    <textarea class="textarea code" id="cfgText" dir="ltr" placeholder="const firebaseConfig = { apiKey: '...', authDomain: '...', projectId: '...', ... };" style="white-space:pre-wrap;max-height:none"></textarea>
+    <div class="row mt"><button class="btn pri" data-act="save-cfg">حفظ والاتصال</button><button class="btn ghost" data-act="try-demo">جرّب الوضع التجريبي أولاً</button></div>
+  </div>
+  <div class="card">${setupStepsHTML()}</div></div>`;
+}
+function setupStepsHTML() {
+  return `<h3>خطوات الربط (مرة واحدة)</h3><ol class="steps">
+    <li>ادخل <b dir="ltr">console.firebase.google.com</b> وأنشئ مشروعاً جديداً (يُفضّل مشروعاً مستقلاً للمنصة).</li>
+    <li><b dir="ltr">Build → Firestore Database → Create database</b> (اختر <b dir="ltr">Production mode</b>).</li>
+    <li><b dir="ltr">Build → Authentication → Sign-in method</b>: فعّل <b dir="ltr">Email/Password</b> و<b dir="ltr">Anonymous</b>، ثم من <b dir="ltr">Users → Add user</b> أنشئ حسابك.</li>
+    <li><b dir="ltr">Project settings → Your apps → Web (&lt;/&gt;)</b>: سجّل تطبيقاً وانسخ <b dir="ltr">firebaseConfig</b> والصقه في المربع.</li>
+    <li>ادخل بحسابك، ثم من تبويب «الإعدادات» انسخ قواعد الأمان والصقها في <b dir="ltr">Firestore → Rules</b> واضغط <b dir="ltr">Publish</b>.</li>
+    <li>من تبويب «الإعدادات» خذ رابط الطلاب أو رمز QR؛ هو الذي يدخل منه الطلاب.</li></ol>
+    <div class="notice warn small">إن استعملت مشروعاً فيه منصة أخرى فلا تستبدل قواعده كلها؛ أضف أجزاء <span dir="ltr">mrn_</span> إلى قواعدك الحالية.</div>`;
+}
+function renderLogin() {
+  S.view = 'login';
+  app.innerHTML = `${demoBar()}<div class="wrap" style="max-width:440px"><div class="hero"><div class="logo">م</div><h1>${APP.name}</h1><div class="muted">لوحة الأستاذ</div></div>
+  <div class="card mt">
+    <label class="field"><span>البريد الإلكتروني</span><input class="input" id="lgEmail" type="email" dir="ltr" autocomplete="username"></label>
+    <label class="field"><span>كلمة المرور</span><input class="input" id="lgPass" type="password" dir="ltr" autocomplete="current-password"></label>
+    ${S.mode === 'demo' ? '<p class="small muted">في الوضع التجريبي اكتب أي بريد وكلمة مرور.</p>' : ''}
+    <button class="btn pri block mt" data-act="login">دخول</button>
+  </div><div class="foot"><button class="btn link" data-act="student-page">صفحة الطالب</button>${DEFAULT_CONFIG ? '' : ' · <button class="btn link" data-act="clear-cfg">تغيير قاعدة البيانات</button>'}</div></div>`;
+  $('#lgPass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+}
+async function doLogin() {
+  const em = $('#lgEmail')?.value || '', pw = $('#lgPass')?.value || '';
+  if (S.mode !== 'demo' && (!em || !pw)) return toast('اكتب البريد وكلمة المرور', 'warn');
+  await busy(() => S.db.teacherLogin(em, pw));
+}
+function stopAdmin() { (S.adm.unsub || []).forEach(f => { try { f && f(); } catch (e) {} }); S.adm.unsub = []; S.adm.started = false; stopMonitor(); }
+function startAdmin() {
+  stopAdmin(); S.adm.started = true; S.adm.view = 'home'; S.adm.err = ''; S.view = 'admin';
+  const onErr = e => { console.error(e); S.adm.err = errMsg(e); renderAdmin(); };
+  S.adm.unsub = [
+    S.db.watchSettings(s => { S.adm.settings = s || { open: true }; renderAdmin(); }, onErr),
+    S.db.watchGroups(g => { S.adm.groups = g; if (S.adm.tab !== 'settings' || S.adm.view === 'monitor') renderAdmin(); }, onErr),
+    S.db.watchQuizzes(q => { S.adm.quizzes = q; if (S.adm.tab !== 'settings' || S.adm.view === 'monitor') renderAdmin(); }, onErr),
+    S.db.watchRequests(list => { S.adm.requests = list; loadBindIps(list); if (S.adm.tab !== 'settings' || S.adm.view === 'monitor') renderAdmin(); }, onErr),
+  ];
+  renderAdmin();
+}
+function renderAdmin() {
+  if (!S.adm.started) return;
+  if (S.adm.view === 'monitor') return renderMonitor();
+  const t = S.adm.tab;
+  const qOpen = S.adm.quizzes.filter(q => q.status === 'open').length;
+  app.innerHTML = `${adminTop()}<div class="wrap wide">
+    ${S.adm.err ? `<div class="notice danger mt">${esc(S.adm.err)} <button class="btn link" data-act="tab" data-tab="settings">الإعدادات</button> <button class="btn link" onclick="location.reload()">إعادة التحميل بعد نشر القواعد</button></div>` : ''}
+    ${requestsCard()}
+    <div class="tabs mt">
+      <button class="tab ${t === 'quizzes' ? 'on' : ''}" data-act="tab" data-tab="quizzes">النماذج${qOpen ? ` <span class="chip ok">${qOpen} مفتوح</span>` : ''}</button>
+      <button class="tab ${t === 'courses' ? 'on' : ''}" data-act="tab" data-tab="courses">المواد والطلاب</button>
+      <button class="tab ${t === 'settings' ? 'on' : ''}" data-act="tab" data-tab="settings">الإعدادات</button>
+    </div>
+    <div id="tabBody">${t === 'quizzes' ? quizzesTab() : t === 'courses' ? coursesTab() : settingsTab()}</div>
+  </div>`;
+  if (t === 'settings') renderQR($('#setQR'), studentLink(), 170);
+}
+const bindIp = {};
+async function loadBindIps(list) {
+  let changed = false;
+  for (const r of list || []) { if (r.sid in bindIp) continue; bindIp[r.sid] = null; try { const b = await S.db.getBind(r.sid); bindIp[r.sid] = b?.ip || ''; changed = true; } catch (e) { bindIp[r.sid] = ''; } }
+  if (changed && S.adm.started && (S.adm.tab !== 'settings' || S.adm.view === 'monitor')) renderAdmin();
+}
+function requestsCard() {
+  const R = S.adm.requests || []; if (!R.length) return '';
+  return `<div class="card mt" style="border-color:var(--warn)"><h3>طلبات دخول من جهاز آخر (${R.length})</h3>
+    ${R.map(r => { const oldIp = bindIp[r.sid]; const same = oldIp && r.ip && oldIp === r.ip; return `<div class="switch-row"><div>
+      <b>${esc(r.name)}</b> <span class="chip" dir="ltr">${esc(r.sid)}</span>
+      <div class="small muted">${r.reason === 'id' ? 'رقمه مرتبط بجهاز أو متصفح آخر' : `الجهاز مرتبط برقم آخر${r.otherSid ? ' (<span dir="ltr">' + esc(r.otherSid) + '</span>)' : ''}`} · ${esc(r.quizTitle || '')}</div>
+      <div class="small">عنوان الجهاز الجديد (IP): <span dir="ltr">${esc(r.ip || 'غير معروف')}</span>${r.reason === 'id' ? ` · عنوان الجهاز المسجل: <span dir="ltr">${esc(oldIp == null ? '…' : (oldIp || 'غير معروف'))}</span>` : ''} ${same ? '<span class="chip info">نفس الشبكة</span>' : ''}</div>
+      <div class="small muted">${esc(r.device || '')} · ${clock(toMs(r.at))}</div></div>
+      <div class="row"><button class="btn sm pri" data-act="req-ok" data-id="${esc(r.sid + '_' + r.uid)}">سماح</button><button class="btn sm soft-danger" data-act="req-no" data-id="${esc(r.sid + '_' + r.uid)}">رفض</button></div></div>`; }).join('')}
+    <div class="small muted mt">«سماح» يربط الرقم بالجهاز الجديد ويلغي ربطه بالسابق. «نفس الشبكة» تعني أن الجهازين على شبكة واحدة (مثل شبكة الجامعة)، ولا تثبت بذاتها أنه الطالب نفسه.</div></div>`;
+}
+function statusChip(q) {
+  if (q.courseClosed) return '<span class="chip danger">المادة مغلقة</span>';
+  return q.status === 'open' ? '<span class="chip ok"><span class="live-dot"></span> مفتوح الآن</span>' : q.status === 'closed' ? '<span class="chip">مغلق</span>' : '<span class="chip info">مسودة</span>';
+}
+function quizzesTab() {
+  const qs = S.adm.quizzes;
+  return `<div class="bar"><h2>النماذج</h2><div class="row">${S.mode === 'demo' && !qs.length ? '<button class="btn" data-act="seed-demo">إضافة بيانات تجريبية</button>' : ''}<button class="btn pri" data-act="new-quiz">＋ نموذج جديد</button></div></div>
+  ${qs.length ? `<div class="grid2">${qs.map(q => `<div class="card">
+      <div class="row between"><div class="qc-title">${esc(q.title)}</div>${statusChip(q)}</div>
+      <div class="qc-meta">${esc(q.groupName || 'بدون قائمة أسماء')} · ${q.questions?.length || 0} سؤالاً · الدرجة من ${fmtNum(q.maxScore)}</div>
+      <div class="qc-meta">رمز الدخول: <span class="pin-t">${esc(q.pin)}</span>${q.showScore ? '' : ' · الدرجة مخفية عن الطالب'}</div>
+      <div class="qc-actions">
+        ${q.status === 'open' ? `<button class="btn sm soft-danger" data-act="close-quiz" data-id="${q.id}">إغلاق</button>` : `<button class="btn sm pri" data-act="open-quiz" data-id="${q.id}">فتح للطلاب</button>`}
+        <button class="btn sm" data-act="monitor" data-id="${q.id}">المتابعة والنتائج</button>
+        <button class="btn sm ghost" data-act="edit-quiz" data-id="${q.id}">إعدادات</button>
+        <button class="btn sm ghost" data-act="copy-quiz" data-id="${q.id}">نسخ لشعبة</button>
+        <button class="btn sm ghost" data-act="del-quiz" data-id="${q.id}" style="color:var(--danger)">حذف</button>
+      </div></div>`).join('')}</div>`
+    : `<div class="card empty"><h3>لا توجد نماذج بعد</h3><p>ابدأ بإضافة مادة وأسماء طلابها من تبويب «المواد والطلاب»، ثم أنشئ نموذجاً وارفع ملف الأسئلة.</p></div>`}`;
+}
+function coursesTab() {
+  const gs = S.adm.groups;
+  return `<div class="bar"><h2>المواد والطلاب</h2><button class="btn pri" data-act="new-course">＋ مادة / شعبة</button></div>
+  <p class="muted small" style="margin-top:-6px">يمكنك إنشاء مادة مستقلة لكل شعبة، ورفع أسماء طلابها من ملف Excel أو نصي.</p>
+  ${gs.length ? `<div class="grid2">${gs.map(g => { const nq = S.adm.quizzes.filter(q => q.groupId === g.id).length; return `<div class="card">
+      <div class="row between"><div class="qc-title">${esc(g.name)}</div>${g.closed ? '<span class="chip danger">مغلقة</span>' : '<span class="chip ok">مفتوحة</span>'}</div>
+      <div class="qc-meta">${(g.students || []).length} طالباً · ${nq} نموذجاً</div>
+      <div class="qc-actions">
+        <button class="btn sm" data-act="edit-course" data-id="${g.id}">الأسماء والتعديل</button>
+        ${g.closed ? `<button class="btn sm pri" data-act="course-close" data-id="${g.id}" data-closed="0">فتح المادة</button>` : `<button class="btn sm soft-danger" data-act="course-close" data-id="${g.id}" data-closed="1">إغلاق المادة</button>`}
+        <button class="btn sm ghost" data-act="del-course" data-id="${g.id}" style="color:var(--danger)">حذف</button>
+      </div></div>`; }).join('')}</div>`
+    : '<div class="card empty"><h3>لا توجد مواد بعد</h3><p>أضف مادة أو شعبة وارفع أسماء طلابها.</p></div>'}`;
+}
+function studentLink() {
+  const base = location.href.split('#')[0];
+  if (S.mode === 'demo') return base + '#demo';
+  const c = DEFAULT_CONFIG ? null : readCfg();
+  return base + (c ? '#c=' + encodeCfg(c) : '');
+}
+function settingsTab() {
+  const live = S.mode === 'live', cfg = readCfg();
+  return `<div class="card"><h3>رابط دخول الطلاب</h3>
+      <p class="muted small">اعرضه في القاعة أو أرسله للطلاب؛ يفتح المنصة مربوطة بقاعدة بياناتك. ومن شاشة المتابعة تجد زر «عرض للطلاب» برمز QR كبير.</p>
+      <div class="row"><input class="input grow" id="stuLink" readonly dir="ltr" value="${esc(studentLink())}"><button class="btn" data-act="copy" data-sel="#stuLink">نسخ الرابط</button></div>
+      <div id="setQR" class="mt" style="display:inline-block;background:#fff;padding:10px;border-radius:12px"></div></div>
+    <div class="card"><h3>الاتصال بقاعدة البيانات</h3>
+      ${live ? `<p>متصل بمشروع: <b dir="ltr">${esc(cfg?.projectId || '')}</b></p>` : '<p class="muted">الوضع التجريبي: البيانات محفوظة في هذا المتصفح فقط.</p>'}
+      ${DEFAULT_CONFIG ? '<p class="small muted">الاتصال مضمّن في ملف المنصة، فيدخل الطلاب من رابط المنصة مباشرة.</p>' : `<label class="field"><span>${live ? 'تغيير إعدادات فايربيز' : 'الصق إعدادات فايربيز للانتقال إلى الوضع الحقيقي'}</span><textarea class="textarea code" id="cfgText" dir="ltr" style="white-space:pre-wrap;max-height:none" placeholder="const firebaseConfig = { ... };"></textarea></label>
+      <div class="row mt"><button class="btn pri" data-act="save-cfg">حفظ والاتصال</button>${cfg && !DEFAULT_CONFIG ? '<button class="btn soft-danger" data-act="clear-cfg">مسح الإعدادات من هذا الجهاز</button>' : ''}</div>
+      <p class="small muted">تُحفظ الإعدادات في هذا المتصفح فقط ولا تُكتب في ملف المنصة.</p>`}</div>
+    ${live ? `<div class="card"><h3>قواعد الأمان (Firestore Rules)</h3><p class="muted small">انسخها والصقها في <b dir="ltr">Firestore Database → Rules</b> ثم اضغط <b dir="ltr">Publish</b>. بريدك مكتوب فيها، وهي التي تمنع الطلاب من رؤية مفاتيح الإجابات أو إجابات زملائهم.</p><pre class="code" id="rulesPre">${esc(rulesText(S.teacher?.email))}</pre><button class="btn mt" data-act="copy" data-sel="#rulesPre">نسخ القواعد</button></div>` : ''}
+    <div class="card">${setupStepsHTML()}</div>
+    <div class="card"><h3>ملف الأسئلة</h3><p class="muted small">ملف JSON فيه العنوان والدرجة والمدة والأسئلة. الأنواع: <span dir="ltr">mcq</span> اختيار من متعدد، <span dir="ltr">tf</span> صح أو خطأ، <span dir="ltr">match</span> تصنيف، <span dir="ltr">text</span> كتابة تطبيقية (لا تدخل في الدرجة الآلية). رقم الإجابة الصحيحة يبدأ من 1.</p><button class="btn" data-act="dl-template">تنزيل نموذج ملف الأسئلة</button></div>`;
+}
+
+/* ---------- المنصة والمواد ---------- */
+async function setPlatform(open) {
+  if (!open && !(await confirmBox('إغلاق المنصة', 'سيُغلق كل نموذج مفتوح الآن في جميع المواد، ولن يستطيع أي طالب الدخول حتى تفتح المنصة من جديد. (تبقى النتائج كما هي)', 'إغلاق المنصة', true))) return;
+  await busy(async () => {
+    await S.db.setSettings({ open, changedAt: SERVER_TS });
+    if (!open) for (const q of S.adm.quizzes.filter(q => q.status === 'open')) await S.db.updateQuiz(q.id, { status: 'closed', closedAt: SERVER_TS });
+    toast(open ? 'فُتحت المنصة' : 'أُغلقت المنصة', 'ok');
+  });
+}
+async function setCourseClosed(g, closed) {
+  if (closed && !(await confirmBox('إغلاق المادة', `سيُغلق كل نموذج مفتوح في «${esc(g.name)}»، ولن يُفتح أي نموذج فيها حتى تفتح المادة.`, 'إغلاق المادة', true))) return;
+  await busy(async () => {
+    await S.db.updateGroup(g.id, { closed });
+    for (const q of S.adm.quizzes.filter(q => q.groupId === g.id)) {
+      const p = { courseClosed: closed };
+      if (closed && q.status === 'open') { p.status = 'closed'; p.closedAt = SERVER_TS; }
+      await S.db.updateQuiz(q.id, p);
+    }
+    toast(closed ? 'أُغلقت المادة' : 'فُتحت المادة', 'ok');
+  });
+}
+function cleanName(s) { return String(s ?? '').replace(/^\s*[\d٠-٩]+\s*[-–.)\]:]?\s+/, '').replace(/["']/g, '').replace(/\s+/g, ' ').trim(); }
+function parseStudentLine(l) {
+  const t = toLatin(l).trim(); if (!t) return null;
+  const m = t.match(/\d{6,12}/); const id = m ? m[0] : '';
+  const name = cleanName((m ? t.replace(m[0], ' ') : t).replace(/^[\s\-–.,:;|)\]]+|[\s\-–.,:;|(]+$/g, ''));
+  return (name.length >= 3 && /[\u0600-\u06FFa-zA-Z]/.test(name)) ? { id, name } : null;
+}
+function dedupStudents(list) { const seen = new Set(), out = []; for (const x of list) { if (!x) continue; const k = stuKey(x); if (seen.has(k)) continue; seen.add(k); out.push(x); } return out; }
+function parseStudentsText(t) { return dedupStudents(String(t || '').split(/\r?\n/).map(parseStudentLine)); }
+function studentsToText(list) { return (list || []).map(normStudent).map(x => x.id ? `${x.id} - ${x.name}` : x.name).join('\n'); }
+function pickStudents(rows) {
+  rows = rows.filter(r => r && r.some(c => String(c ?? '').trim()));
+  if (!rows.length) return [];
+  const width = Math.max(...rows.map(r => r.length));
+  const cell = (r, c) => toLatin(String(r[c] ?? '')).trim();
+  const head = rows[0].map((c, i) => cell(rows[0], i));
+  let idCol = head.findIndex(h => /جامعي|الرقم الجامعي|student\s*id|^id$/i.test(h));
+  if (idCol < 0) { let best = -1, bestN = 0; for (let c = 0; c < width; c++) { const n = rows.filter(r => /^\d{6,12}$/.test(cell(r, c))).length; if (n > bestN) { bestN = n; best = c; } } idCol = best; }
+  let nameCol = head.findIndex((h, i) => i !== idCol && /اسم|الاسم|name/i.test(h) && !/رقم|id|هوية|سجل/i.test(h));
+  if (nameCol < 0) { let best = -1, bestN = -1; for (let c = 0; c < width; c++) { if (c === idCol) continue; const n = rows.filter(r => /[\u0600-\u06FF]{2,}\s+[\u0600-\u06FF]{2,}/.test(cell(r, c))).length; if (n > bestN) { bestN = n; best = c; } } nameCol = best; }
+  if (nameCol < 0) return [];
+  const out = rows.map(r => { const name = cleanName(cell(r, nameCol)); const idv = idCol >= 0 ? normSid(cell(r, idCol)) : ''; return { id: validSid(idv) ? idv : '', name }; })
+    .filter(x => x.name.length >= 3 && /[\u0600-\u06FFa-zA-Z]/.test(x.name) && !/^(الاسم|اسم الطالب|name)$/i.test(x.name));
+  return dedupStudents(out);
+}
+async function studentsFromFile(file) {
+  const ext = (file.name.split('.').pop() || '').toLowerCase();
+  if (['xlsx', 'xls', 'ods'].includes(ext)) {
+    await loadScript('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js', 'XLSX');
+    const wb = window.XLSX.read(await file.arrayBuffer(), { type: 'array' });
+    const ws = wb.Sheets[wb.SheetNames[0]];
+    return pickStudents(window.XLSX.utils.sheet_to_json(ws, { header: 1, raw: false, defval: '' }));
+  }
+  const text = await file.text();
+  const rows = text.split(/\r?\n/).map(l => l.split(/[,;\t]/));
+  return rows.some(r => r.length > 1) ? pickStudents(rows) : parseStudentsText(text);
+}
+function courseModal(g) {
+  const isNew = !g; g = g || { name: '', students: [] };
+  const m = modal(`<h3>${isNew ? 'مادة / شعبة جديدة' : 'تعديل المادة'}</h3>
+    <label class="field"><span>الاسم</span><input class="input" id="cName" value="${esc(g.name)}" placeholder="مثال: صياغة النصوص 382 – الشعبة 1"></label>
+    <label class="field"><span>رفع ملف الأسماء (Excel أو CSV أو TXT)</span><input type="file" id="cFile" class="input" accept=".xlsx,.xls,.ods,.csv,.txt"></label>
+    <label class="field"><span>الطلاب: الرقم الجامعي ثم الاسم، طالب في كل سطر — <b id="cCount"></b></span><textarea class="textarea" id="cNames" rows="10" placeholder="441234567 - محمد عبدالله ...">${esc(studentsToText(g.students))}</textarea></label>
+    <div class="actions"><button class="btn ghost" data-close>إلغاء</button><button class="btn pri" id="cSave">حفظ</button></div>`, { sticky: true });
+  const count = () => { const L = parseStudentsText($('#cNames', m).value); const noId = L.filter(x => !x.id).length; $('#cCount', m).textContent = L.length + ' طالباً' + (noId ? ` (${noId} بلا رقم جامعي)` : ''); };
+  count(); $('#cNames', m).addEventListener('input', count);
+  $('#cFile', m).addEventListener('change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    await busy(async () => { const L = await studentsFromFile(f); if (!L.length) return toast('لم أجد أسماء في الملف', 'warn'); $('#cNames', m).value = studentsToText(L); count(); toast(`قُرئ ${L.length} طالباً`, 'ok'); });
+  });
+  $('#cSave', m).onclick = async () => {
+    const name = $('#cName', m).value.trim(); if (!name) return toast('اكتب اسم المادة', 'warn');
+    const students = parseStudentsText($('#cNames', m).value);
+    await busy(async () => {
+      const id = await S.db.saveGroup({ id: g.id, name, students, closed: !!g.closed });
+      for (const q of S.adm.quizzes.filter(q => q.groupId === id && q.status !== 'closed')) await S.db.updateQuiz(q.id, { roster: students, rosterIds: rosterIds(students), groupName: name });
+      closeModal(); toast('حُفظت المادة', 'ok');
+    });
+  };
+}
+
+/* ---------- النماذج ---------- */
+function pinInUse(pin, exceptId) { return S.adm.quizzes.some(q => q.id !== exceptId && q.pin === pin && q.status !== 'closed'); }
+function newPin(exceptId) { for (let i = 0; i < 500; i++) { const p = String(10000 + Math.floor(Math.random() * 90000)); if (!pinInUse(p, exceptId)) return p; } return String(10000 + Math.floor(Math.random() * 90000)); }
+const buildRevealed = key => clone(key || {});
+function quizModal(existing) {
+  const isNew = !existing, groups = S.adm.groups;
+  const q = existing || { title: '', groupId: groups[0]?.id || '', maxScore: 5, durationMin: 20, shuffleQ: false, shuffleO: true, showScore: true, showAnswers: false, pin: '' };
+  let compiled = null;
+  const m = modal(`<h3>${isNew ? 'نموذج جديد' : 'إعدادات النموذج'}</h3>
+    <label class="field"><span>${isNew ? 'ملف الأسئلة (JSON)' : 'استبدال ملف الأسئلة (اختياري)'}</span><input type="file" id="qFile" class="input" accept=".json,application/json"></label>
+    <div id="qInfo" class="small muted">${isNew ? 'ارفع ملف الأسئلة. <button class="btn link" id="tplBtn" type="button">تنزيل نموذج ملف</button>' : `${q.questions.length} سؤالاً حالياً.`}</div>
+    <label class="field"><span>عنوان النموذج</span><input class="input" id="qTitle" value="${esc(q.title)}"></label>
+    <label class="field"><span>المادة / الشعبة</span><select class="select" id="qGroup"><option value="">بدون قائمة أسماء (يكتب الطالب اسمه)</option>${groups.map(g => `<option value="${g.id}" ${g.id === q.groupId ? 'selected' : ''}>${esc(g.name)} (${(g.students || []).length})</option>`).join('')}</select></label>
+    <div class="row">
+      <label class="field grow"><span>الدرجة الكلية</span><input class="input" id="qMax" type="number" min="0.5" step="0.5" value="${esc(q.maxScore)}"></label>
+      <label class="field grow"><span>المدة بالدقائق (0 بلا حد)</span><input class="input" id="qDur" type="number" min="0" step="1" value="${esc(q.durationMin)}"></label>
+      <label class="field grow"><span>رمز الدخول (${PIN_LEN} أرقام)</span><input class="input" id="qPin" inputmode="numeric" maxlength="${PIN_LEN}" dir="ltr" value="${esc(q.pin)}" placeholder="تلقائي"></label>
+    </div>
+    <label class="check"><input type="checkbox" id="qShowScore" ${q.showScore ? 'checked' : ''}><span>إظهار الدرجة للطالب بعد التسليم</span></label>
+    <label class="check"><input type="checkbox" id="qShowAns" ${q.showAnswers ? 'checked' : ''}><span>إظهار الإجابات الصحيحة للطالب بعد التسليم <small class="muted">(أبقه مغلقاً حتى تنتهي كل الشعب)</small></span></label>
+    <label class="check"><input type="checkbox" id="qShufO" ${q.shuffleO ? 'checked' : ''}><span>خلط ترتيب الخيارات لكل طالب</span></label>
+    <label class="check"><input type="checkbox" id="qShufQ" ${q.shuffleQ ? 'checked' : ''}><span>خلط ترتيب الأسئلة لكل طالب</span></label>
+    <div class="actions"><button class="btn ghost" data-close>إلغاء</button><button class="btn pri" id="qSave">${isNew ? 'إنشاء النموذج' : 'حفظ'}</button></div>`, { sticky: true });
+  $('#tplBtn', m)?.addEventListener('click', () => download(JSON.stringify(TEMPLATE, null, 2), 'نموذج-ملف-أسئلة.json', 'application/json'));
+  $('#qFile', m).addEventListener('change', async e => {
+    const f = e.target.files[0]; if (!f) return;
+    let raw; try { raw = JSON.parse((await f.text()).replace(/^﻿/, '')); } catch (err) { compiled = null; $('#qInfo', m).innerHTML = '<span class="bad-t">الملف ليس JSON صحيحاً.</span>'; return; }
+    const c = compileQuestions(raw);
+    if (c.errors.length) { compiled = null; $('#qInfo', m).innerHTML = `<div class="notice danger"><b>في الملف أخطاء:</b><ul>${c.errors.slice(0, 8).map(x => `<li>${esc(x)}</li>`).join('')}</ul></div>`; return; }
+    compiled = c;
+    const cnt = t => c.questions.filter(x => x.type === t).length;
+    $('#qInfo', m).innerHTML = `<div class="notice ok">قُرئ ${c.questions.length} سؤالاً: ${cnt('mcq')} اختيار، ${cnt('tf')} صح/خطأ، ${cnt('match')} تصنيف، ${cnt('text')} كتابة. مجموع نقاط التصحيح الآلي: ${fmtNum(c.autoTotal)}.</div>`;
+    if (c.title && (isNew || !$('#qTitle', m).value.trim())) $('#qTitle', m).value = c.title;
+    if (isNew && c.maxScore) $('#qMax', m).value = c.maxScore;
+    if (isNew && c.durationMin != null && Number.isFinite(c.durationMin)) $('#qDur', m).value = c.durationMin;
+  });
+  $('#qSave', m).onclick = async () => {
+    const title = $('#qTitle', m).value.trim() || compiled?.title || 'نموذج بدون عنوان';
+    const max = Number($('#qMax', m).value); if (!(max > 0)) return toast('الدرجة الكلية غير صحيحة', 'warn');
+    const dur = Math.max(0, Math.round(Number($('#qDur', m).value) || 0));
+    let pin = toLatin($('#qPin', m).value).replace(/\D/g, '');
+    if (pin && pin.length !== PIN_LEN) return toast(`رمز الدخول ${PIN_LEN} أرقام`, 'warn');
+    if (pin && pinInUse(pin, existing?.id)) return toast('هذا الرمز مستعمل في نموذج آخر غير مغلق', 'warn');
+    if (!pin) pin = existing?.pin || newPin();
+    if (isNew && !compiled) return toast('ارفع ملف الأسئلة أولاً', 'warn');
+    const g = groups.find(x => x.id === $('#qGroup', m).value) || null;
+    const showAnswers = $('#qShowAns', m).checked;
+    const common = { title, groupId: g?.id || null, groupName: g?.name || '', roster: g?.students || [], rosterIds: rosterIds(g?.students), courseClosed: !!g?.closed, maxScore: max, durationMin: dur, showScore: $('#qShowScore', m).checked, showAnswers, shuffleO: $('#qShufO', m).checked, shuffleQ: $('#qShufQ', m).checked, pin };
+    await busy(async () => {
+      if (isNew) {
+        await S.db.createQuiz({ ...common, status: 'draft', questions: compiled.questions, autoTotal: compiled.autoTotal, revealed: showAnswers ? buildRevealed(compiled.key) : null, openedAt: null, closedAt: null }, compiled.key);
+        toast('أُنشئ النموذج. افتحه للطلاب عندما تبدأ.', 'ok', 4000);
+      } else {
+        const patch = { ...common };
+        let key = null;
+        if (compiled) { patch.questions = compiled.questions; patch.autoTotal = compiled.autoTotal; key = compiled.key; await S.db.setKey(existing.id, key); }
+        if (showAnswers) patch.revealed = buildRevealed(key || await S.db.getKey(existing.id)); else patch.revealed = null;
+        await S.db.updateQuiz(existing.id, patch);
+        if (S.mon && S.mon.qid === existing.id) { if (key) S.mon.key = key; setTimeout(() => autoGrade(), 300); }
+        toast('حُفظت الإعدادات', 'ok');
+      }
+      closeModal();
+    });
+  };
+}
+async function setQuizOpen(q, open) {
+  if (open) {
+    if (S.adm.settings.open === false) return toast('المنصة مغلقة. افتحها أولاً من أعلى الصفحة.', 'warn', 4500);
+    if (q.courseClosed) return toast('هذه المادة مغلقة. افتحها من تبويب «المواد والطلاب».', 'warn', 4500);
+    await busy(async () => {
+      let pin = q.pin;
+      if (S.adm.quizzes.some(x => x.id !== q.id && x.status === 'open' && x.pin === pin)) { pin = newPin(q.id); toast('غُيّر رمز الدخول لأنه مستعمل في نموذج مفتوح: ' + pin, 'warn', 5000); }
+      const g = S.adm.groups.find(x => x.id === q.groupId);
+      await S.db.updateQuiz(q.id, { status: 'open', pin, openedAt: SERVER_TS, closedAt: null, ...(g ? { roster: g.students || [], rosterIds: rosterIds(g.students), groupName: g.name } : {}) });
+    });
+  } else {
+    if (!(await confirmBox('إغلاق النموذج', 'لن يستطيع أحد الدخول بعد الإغلاق، وتُسلَّم إجابات من يحل الآن تلقائياً.', 'إغلاق', true))) return;
+    await busy(() => S.db.updateQuiz(q.id, { status: 'closed', closedAt: SERVER_TS }));
+  }
+}
+async function copyQuiz(q) {
+  const m = modal(`<h3>نسخ النموذج لمادة أو شعبة أخرى</h3><p class="muted small">ينشئ نموذجاً جديداً بالأسئلة والإعدادات نفسها، ورمز دخول جديد.</p>
+    <label class="field"><span>المادة / الشعبة</span><select class="select" id="cpGroup"><option value="">بدون قائمة أسماء</option>${S.adm.groups.filter(g => g.id !== q.groupId).map(g => `<option value="${g.id}">${esc(g.name)}</option>`).join('')}</select></label>
+    <div class="actions"><button class="btn ghost" data-close>إلغاء</button><button class="btn pri" id="cpSave">نسخ</button></div>`);
+  $('#cpSave', m).onclick = () => busy(async () => {
+    const key = await S.db.getKey(q.id);
+    const g = S.adm.groups.find(x => x.id === $('#cpGroup', m).value) || null;
+    await S.db.createQuiz({ title: q.title, groupId: g?.id || null, groupName: g?.name || '', roster: g?.students || [], rosterIds: rosterIds(g?.students), courseClosed: !!g?.closed, maxScore: q.maxScore, durationMin: q.durationMin, showScore: q.showScore, showAnswers: false, shuffleO: q.shuffleO, shuffleQ: q.shuffleQ, pin: newPin(), status: 'draft', questions: q.questions, autoTotal: q.autoTotal, revealed: null, openedAt: null, closedAt: null }, key);
+    closeModal(); toast('نُسخ النموذج', 'ok');
+  });
+}
+async function seedDemo() {
+  await busy(async () => {
+    const names = [['441100001', 'عبدالرحمن محمد العتيبي'], ['441100002', 'فيصل عبدالله الحربي'], ['441100003', 'سلمان خالد المطيري'], ['441100004', 'تركي سعد القحطاني'], ['441100005', 'نواف إبراهيم الشمري'], ['441100006', 'ماجد ناصر الدوسري']].map(([id, name]) => ({ id, name }));
+    const gid = await S.db.saveGroup({ name: 'شعبة تجريبية', students: names, closed: false });
+    const c = compileQuestions(TEMPLATE);
+    await S.db.createQuiz({ title: 'نموذج تجريبي', groupId: gid, groupName: 'شعبة تجريبية', roster: names, rosterIds: rosterIds(names), courseClosed: false, maxScore: 5, durationMin: 10, showScore: true, showAnswers: false, shuffleO: true, shuffleQ: false, pin: newPin(), status: 'draft', questions: c.questions, autoTotal: c.autoTotal, revealed: null, openedAt: null, closedAt: null }, c.key);
+    toast('أُضيفت بيانات تجريبية', 'ok');
+  });
+}
+
+/* ---------- المتابعة المباشرة والنتائج ---------- */
+function stopMonitor() { if (S.mon) (S.mon.unsub || []).forEach(f => { try { f && f(); } catch (e) {} }); S.mon = null; }
+async function openMonitor(qid) {
+  stopMonitor();
+  S.adm.view = 'monitor';
+  S.mon = { qid, quiz: S.adm.quizzes.find(q => q.id === qid) || null, key: null, atts: [], unsub: [], grading: false, showAbsent: false };
+  renderMonitor();
+  try { S.mon.key = await S.db.getKey(qid); } catch (e) { toast(errMsg(e), 'danger'); }
+  if (!S.mon || S.mon.qid !== qid) return;
+  const er = e => toast(errMsg(e), 'danger', 6000);
+  S.mon.unsub.push(S.db.watchQuiz(qid, q => { if (!S.mon) return; S.mon.quiz = q; renderMonitor(); autoGrade(); }, er));
+  S.mon.unsub.push(S.db.watchAttempts(qid, list => { if (!S.mon) return; S.mon.atts = list; renderMonitor(); autoGrade(); }, er));
+}
+async function autoGrade(force = false) {
+  const M = S.mon; if (!M || !M.quiz || !M.key || M.grading) return;
+  const q = M.quiz;
+  const writes = [];
+  for (const a of M.atts) {
+    if (!(a.status === 'submitted' || q.status === 'closed')) continue;
+    const g = grade(q, M.key, a.answers);
+    if (force || a.score !== g.score || a.auto?.earned !== g.earned || a.auto?.total !== g.total) writes.push([a.id, { score: g.score, auto: { earned: g.earned, total: g.total, per: g.per }, gradedAt: SERVER_TS }]);
+  }
+  if (!writes.length) return;
+  M.grading = true;
+  try { for (const [id, p] of writes) await S.db.teacherUpdateAttempt(q.id, id, p); }
+  catch (e) { toast(errMsg(e), 'danger'); }
+  finally { if (S.mon === M) M.grading = false; }
+}
+const FLAG_LABEL = { paste: 'لصق', bulk: 'إدخال كتلة', print: 'لقطة شاشة', drop: 'سحب نص', copy: 'نسخ', cut: 'قص', menu: 'قائمة', keys: 'اختصارات', resume: 'إعادة دخول' };
+function flagsHTML(a) {
+  const c = a.counters || {}, out = [];
+  const add = (k, kind) => { if (c[k]) out.push(`<span class="chip ${kind}">${FLAG_LABEL[k]} ${c[k]}</span>`); };
+  add('paste', 'danger'); add('bulk', 'danger'); add('print', 'danger'); add('drop', 'danger');
+  if (c.leave) out.push(`<span class="chip ${c.leave >= 3 || (c.awayMs || 0) > 30000 ? 'danger' : 'warn'}">خروج ${c.leave} (${secs(c.awayMs)})</span>`);
+  add('copy', 'warn'); add('cut', 'warn'); add('menu', 'warn'); add('keys', 'warn'); add('resume', 'info');
+  return out.join('');
+}
+function riskOf(a) {
+  const c = a.counters || {};
+  if (c.paste || c.bulk || c.print || c.drop || (c.leave || 0) >= 3 || (c.awayMs || 0) > 30000) return 'high';
+  if (c.leave || c.copy || c.cut || c.keys || c.menu) return 'mid';
+  return 'low';
+}
+const RISK_LABEL = { low: 'لا مؤشرات', mid: 'مؤشرات خفيفة', high: 'مؤشرات تستحق المراجعة' };
+function attDuration(a) { const s = toMs(a.startedAt), e = toMs(a.submittedAt) || (a.status === 'in_progress' ? Date.now() : toMs(a.lastSaveAt)); return s && e ? e - s : null; }
+function renderMonitor() {
+  const M = S.mon; if (!M) return;
+  const q = M.quiz;
+  if (!q) { app.innerHTML = `${adminTop()}<div class="wrap wide"><button class="btn ghost mt" data-act="mon-back">→ النماذج</button><div class="card mt center"><div class="spinner"></div></div></div>`; return; }
+  const atts = M.atts.slice();
+  const roster = rosterOf(q);
+  const keys = new Set(atts.map(a => a.sid || a.nameKey || nameKey(a.name)));
+  const absent = roster.filter(x => !keys.has(stuKey(x))).sort((x, y) => coll.compare(x.name, y.name));
+  const sub = atts.filter(a => a.status === 'submitted').length, prog = atts.filter(a => a.status === 'in_progress').length;
+  const finals = atts.map(finalScore).filter(v => v != null);
+  const avg = finals.length ? finals.reduce((s, v) => s + v, 0) / finals.length : null;
+  atts.sort((a, b) => (a.status === 'in_progress' ? 0 : 1) - (b.status === 'in_progress' ? 0 : 1) || coll.compare(a.name || '', b.name || ''));
+  const nQ = q.questions.length;
+  app.innerHTML = `${adminTop()}<div class="wrap wide">
+    <button class="btn ghost mt" data-act="mon-back">→ النماذج</button>
+    ${requestsCard()}
+    <div class="card mt"><div class="mon-head">
+      <div><div class="row"><h2 style="margin:0">${esc(q.title)}</h2>${statusChip(q)}</div>
+        <div class="qc-meta">${esc(q.groupName || 'بدون قائمة أسماء')} · ${nQ} سؤالاً${q.durationMin > 0 ? ` · ${q.durationMin} دقيقة` : ''}</div>
+        <div class="qc-actions">
+          ${q.status === 'open' ? `<button class="btn sm soft-danger" data-act="close-quiz" data-id="${q.id}">إغلاق النموذج</button>` : `<button class="btn sm pri" data-act="open-quiz" data-id="${q.id}">فتح للطلاب</button>`}
+          <button class="btn sm" data-act="proj">عرض للطلاب (QR)</button>
+          <button class="btn sm" data-act="report">التقرير PDF</button>
+          <button class="btn sm" data-act="csv">تصدير Excel</button>
+          <button class="btn sm ghost" data-act="edit-quiz" data-id="${q.id}">إعدادات النموذج</button>
+          <button class="btn sm ghost" data-act="key-view">الأسئلة والإجابات</button>
+        </div></div>
+      <div class="pinbox"><small>رمز الدخول</small><b>${esc(q.pin)}</b></div></div>
+      <div class="mt">
+        <div class="switch-row"><div><b>إظهار الدرجة للطالب</b><div class="small muted">الدرجة من ${fmtNum(q.maxScore)} — تُغيَّر من «إعدادات النموذج»</div></div><button class="sw ${q.showScore ? 'on' : ''}" data-act="toggle" data-k="showScore" aria-label="إظهار الدرجة"></button></div>
+        <div class="switch-row"><div><b>إظهار الإجابات الصحيحة للطالب</b><div class="small muted">أبقه مغلقاً حتى تنتهي كل الشعب من النموذج</div></div><button class="sw ${q.showAnswers ? 'on' : ''}" data-act="toggle" data-k="showAnswers" aria-label="إظهار الإجابات"></button></div>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>${atts.length}${roster.length ? ' <small class="muted">من ' + roster.length + '</small>' : ''}</b><span>دخلوا</span></div>
+        <div class="stat"><b>${prog}</b><span>يحلون الآن</span></div>
+        <div class="stat"><b>${sub}</b><span>سلّموا</span></div>
+        <div class="stat"><b>${avg != null ? fmtNum(avg) : '—'}</b><span>متوسط الدرجة</span></div>
+      </div></div>
+    <div class="card list-card mt">${atts.length ? atts.map(a => {
+      const fin = finalScore(a), r = riskOf(a), dur = attDuration(a);
+      const st = a.status === 'submitted' ? '<span class="chip ok">سلّم</span>' : q.status === 'closed' ? '<span class="chip warn">لم يسلّم (حُفظ تلقائياً)</span>' : '<span class="chip info"><span class="live-dot"></span> يحل الآن</span>';
+      return `<button class="att" data-act="att" data-id="${esc(a.id)}">
+        <div class="att-name"><span class="risk ${r}" title="${RISK_LABEL[r]}"></span>${esc(a.name)} ${st}${a.manualScore != null ? '<span class="chip pri">درجة معدّلة</span>' : ''}</div>
+        <div class="att-score">${fin != null ? fmtNum(fin) + '<small class="muted">/' + fmtNum(q.maxScore) + '</small>' : '<small class="muted">—</small>'}</div>
+        <div class="att-meta">${a.sid ? '<span dir="ltr">' + esc(a.sid) + '</span> · ' : ''}${a.progress ?? 0}/${nQ} مُجاب · ${dur != null ? secs(dur) : '—'} · ${esc(a.device || '')}${a.ip ? ' · IP <span dir="ltr">' + esc(a.ip) + '</span>' : ''}</div>
+        <div class="flags">${flagsHTML(a)}</div></button>`; }).join('') : '<div class="empty">لم يدخل أحد بعد. اعرض الرمز للطلاب.</div>'}</div>
+    ${roster.length ? `<div class="card mt"><div class="row between"><b>لم يدخلوا (${absent.length})</b><button class="btn sm ghost" data-act="toggle-absent">${M.showAbsent ? 'إخفاء' : 'عرض'}</button></div>${M.showAbsent ? `<div class="small mt">${absent.length ? absent.map(x => esc(x.name) + (x.id ? ' <span dir="ltr" class="muted">(' + esc(x.id) + ')</span>' : '')).join('، ') : 'دخل الجميع'}</div>` : ''}</div>` : ''}
+  </div>`;
+}
+async function toggleQuizFlag(k) {
+  const M = S.mon, q = M?.quiz; if (!q) return;
+  const v = !q[k];
+  await busy(async () => {
+    if (k === 'showAnswers') { const key = M.key || await S.db.getKey(q.id); await S.db.updateQuiz(q.id, { showAnswers: v, revealed: v ? buildRevealed(key) : null }); }
+    else { await S.db.updateQuiz(q.id, { [k]: v }); if (v) autoGrade(); }
+    toast(v ? 'يظهر الآن للطلاب' : 'أُخفي عن الطلاب', 'ok');
+  });
+}
+const EV_LABEL = { start: 'بدأ الحل', resume: 'أعاد فتح النموذج', paste: 'محاولة لصق (مُنعت)', drop: 'محاولة سحب نص (مُنعت)', copy: 'محاولة نسخ (مُنعت)', cut: 'محاولة قص (مُنعت)', menu: 'فتح القائمة / زر الفأرة الأيمن', keys: 'اختصار لوحة مفاتيح ممنوع', bulk: 'إدخال نص كبير دفعة واحدة (مُنع)', print: 'زر لقطة الشاشة', leave: 'خرج من الصفحة', timeup: 'انتهى الوقت', closed: 'أُغلق النموذج أثناء الحل', submit: 'سلّم الإجابات' };
+function evDetail(e) { if (e.d == null) return ''; if (e.k === 'leave') return ` (${e.d} ث)`; if (e.k === 'bulk') return ` (${e.d} حرفاً)`; if (e.k === 'keys') return ` (${esc(String(e.d).toUpperCase())})`; return ''; }
+function attemptModal(a) {
+  const M = S.mon, q = M.quiz, key = M.key || {};
+  const g = grade(q, key, a.answers);
+  const c = a.counters || {}, r = riskOf(a);
+  const body = q.questions.map((x, i) => {
+    const k = key[x.id] || {}, v = a.answers?.[x.id]; let s = '';
+    if (x.type === 'mcq') { const ok = v === k.answer; s = `<div class="rv-a">${v ? `<span class="${ok ? 'ok-t' : 'bad-t'}">${ok ? '✓' : '✗'} ${esc(optText(x, v))}</span>` : '<span class="muted">لم يُجب</span>'}${ok ? '' : ` — الصحيحة: <span class="ok-t">${esc(optText(x, k.answer))}</span>`}</div>`; }
+    else if (x.type === 'tf') { const ok = v === k.answer; const t = b => b === true ? 'صح' : b === false ? 'خطأ' : 'لم يُجب'; s = `<div class="rv-a"><span class="${ok ? 'ok-t' : 'bad-t'}">${ok ? '✓' : '✗'} ${t(v)}</span>${ok ? '' : ` — الصحيحة: <span class="ok-t">${t(k.answer)}</span>`}</div>`; }
+    else if (x.type === 'match') { s = (x.items || []).map((it, j) => { const mine = v?.[it.id], ok = mine && mine === k.answers?.[it.id]; return `<div class="rv-a">${j + 1}) ${esc(it.text)} ← <span class="${ok ? 'ok-t' : 'bad-t'}">${ok ? '✓' : '✗'} ${esc(mine ? optText(x, mine) : 'لم يُجب')}</span>${ok ? '' : ` — الصحيحة: <span class="ok-t">${esc(optText(x, k.answers?.[it.id]))}</span>`}</div>`; }).join(''); }
+    else if (x.type === 'text') { s = `<div class="rv-a"><b>إجابته:</b> ${v ? nl(v) : '<span class="muted">لم يُجب</span>'}</div>${k.model ? `<div class="rv-a muted"><b>النموذجية:</b> ${nl(k.model)}</div>` : ''}`; }
+    return `<div class="rv"><div class="rv-q">${i + 1}) ${nl(x.text)}</div>${s}</div>`;
+  }).join('');
+  const evs = (a.events || []).slice().sort((x, y) => x.t - y.t);
+  const m = modal(`<div class="row between"><h3 style="margin:0">${esc(a.name)}</h3><span class="chip ${r === 'high' ? 'danger' : r === 'mid' ? 'warn' : 'ok'}">${RISK_LABEL[r]}</span></div>
+    <dl class="kv mt">
+      <dt>الحالة</dt><dd>${a.status === 'submitted' ? 'سلّم' : 'لم يسلّم'}</dd>
+      <dt>البدء / التسليم</dt><dd>${clock(toMs(a.startedAt))} / ${clock(toMs(a.submittedAt))}</dd>
+      <dt>المدة</dt><dd>${attDuration(a) != null ? secs(attDuration(a)) : '—'}</dd>
+      <dt>الرقم الجامعي</dt><dd dir="ltr" style="text-align:right">${esc(a.sid || '—')}</dd>
+      <dt>الجهاز</dt><dd>${esc(a.device || '—')}</dd>
+      <dt>عنوان IP</dt><dd dir="ltr" style="text-align:right">${esc(a.ip || 'غير معروف')}</dd>
+      <dt>التصحيح الآلي</dt><dd>${fmtNum(g.earned)} من ${fmtNum(g.total)} نقطة = ${fmtNum(g.score)} من ${fmtNum(q.maxScore)}</dd>
+      <dt>الخروج من الصفحة</dt><dd>${c.leave || 0} مرة${c.leave ? ` (المجموع ${secs(c.awayMs)})` : ''}</dd>
+      <dt>محاولات اللصق / النسخ</dt><dd>${(c.paste || 0) + (c.drop || 0) + (c.bulk || 0)} / ${(c.copy || 0) + (c.cut || 0)}</dd>
+      <dt>لقطة شاشة (زر الحاسب)</dt><dd>${c.print || 0}</dd>
+    </dl>
+    <div class="row mt"><label class="field grow" style="margin:0"><span>الدرجة المعتمدة (تعديل يدوي)</span><input class="input" id="manScore" type="number" step="0.25" min="0" max="${esc(q.maxScore)}" value="${a.manualScore != null ? esc(a.manualScore) : ''}" placeholder="${fmtNum(g.score)}"></label>
+      <button class="btn pri" id="manSave" style="align-self:flex-end">اعتماد</button>${a.manualScore != null ? '<button class="btn ghost" id="manClear" style="align-self:flex-end">إلغاء التعديل</button>' : ''}</div>
+    <h3 class="mt2">الإجابات</h3>${body}
+    <h3 class="mt2">سجل الأحداث</h3><ul class="timeline">${evs.length ? evs.map(e => `<li><time>${clockS(e.t)}</time><span>${EV_LABEL[e.k] || esc(e.k)}${evDetail(e)}</span></li>`).join('') : '<li>لا شيء</li>'}</ul>
+    <div class="actions">${a.sid ? '<button class="btn ghost" id="unbindAtt">فك ربط الرقم بجهازه</button>' : ''}<button class="btn soft-danger" id="resetAtt">إعادة السماح بالدخول</button><button class="btn" data-close>إغلاق</button></div>`, { wide: true });
+  $('#unbindAtt', m)?.addEventListener('click', async () => {
+    if (!(await confirmBox('فك ربط الرقم بالجهاز', `يستطيع صاحب الرقم <span dir="ltr">${esc(a.sid)}</span> بعدها الدخول من أي جهاز مرة واحدة، فيرتبط به.`, 'فك الربط'))) return;
+    busy(async () => { await S.db.unbind(a.sid, a.id); toast('فُك الربط', 'ok'); });
+  });
+  $('#manSave', m).onclick = () => { const v = Number($('#manScore', m).value); if (!($('#manScore', m).value !== '' && v >= 0 && v <= Number(q.maxScore))) return toast(`اكتب درجة بين 0 و${fmtNum(q.maxScore)}`, 'warn'); busy(async () => { await S.db.teacherUpdateAttempt(q.id, a.id, { manualScore: v }); closeModal(); toast('اعتُمدت الدرجة', 'ok'); }); };
+  $('#manClear', m)?.addEventListener('click', () => busy(async () => { await S.db.teacherUpdateAttempt(q.id, a.id, { manualScore: DEL }); closeModal(); toast('أُلغي التعديل', 'ok'); }));
+  $('#resetAtt', m).onclick = async () => {
+    if (!(await confirmBox('إعادة السماح بالدخول', `ستُحذف مشاركة «${esc(a.name)}» وإجاباته، ويستطيع الدخول من جديد (مثلاً إذا تعطل جواله؛ وإن دخل من جهاز آخر سيصلك طلب سماح).`, 'حذف وإعادة السماح', true))) return;
+    busy(async () => { await S.db.resetAttempt(q.id, a.id, a.nameKey || nameKey(a.name)); toast('يستطيع الطالب الدخول من جديد', 'ok'); });
+  };
+}
+function keyHTML(q, key, forPrint = false) {
+  return q.questions.map((x, i) => {
+    const k = key?.[x.id] || {}; let s = '';
+    if (x.type === 'mcq') s = `<div>${x.options.map(o => o.id === k.answer ? `<div class="${forPrint ? 'rq-ok' : 'ok-t'}">✓ ${esc(o.text)}</div>` : `<div>○ ${esc(o.text)}</div>`).join('')}</div>`;
+    else if (x.type === 'tf') s = `<div class="${forPrint ? 'rq-ok' : 'ok-t'}">الإجابة: ${k.answer ? 'صح' : 'خطأ'}</div>`;
+    else if (x.type === 'match') s = (x.items || []).map((it, j) => `<div>${j + 1}) ${esc(it.text)} ← <span class="${forPrint ? 'rq-ok' : 'ok-t'}">${esc(optText(x, k.answers?.[it.id]))}</span></div>`).join('');
+    else if (x.type === 'text') s = k.model ? `<div><b>الإجابة النموذجية:</b> <span class="${forPrint ? 'rq-ok' : 'ok-t'}">${nl(k.model)}</span></div>` : '';
+    const ex = k.explanation ? `<div class="${forPrint ? 'rq-ex' : 'muted small'}">${nl(k.explanation)}</div>` : '';
+    return forPrint ? `<div class="rq"><div class="rq-q">${i + 1}) ${nl(x.text)} <small style="color:#777">(${TYPE_LABEL[x.type]}${x.type !== 'text' ? ' · ' + fmtNum(x.points) + ' نقطة' : ''})</small></div>${s}${ex}</div>`
+      : `<div class="rv"><div class="rv-q">${i + 1}) ${nl(x.text)} <span class="chip">${TYPE_LABEL[x.type]}${x.type !== 'text' ? ' · ' + fmtNum(x.points) : ''}</span></div>${s}${ex}</div>`;
+  }).join('');
+}
+function reportRows(q, atts) {
+  const rows = atts.map(a => ({ name: a.name, sid: a.sid || '', a, score: finalScore(a), status: a.status === 'submitted' ? 'سلّم' : 'لم يسلّم' }));
+  const keys = new Set(atts.map(a => a.sid || a.nameKey || nameKey(a.name)));
+  for (const x of rosterOf(q)) if (!keys.has(stuKey(x))) rows.push({ name: x.name, sid: x.id, a: null, score: null, status: 'لم يشارك' });
+  return rows.sort((x, y) => coll.compare(x.name || '', y.name || ''));
+}
+function reportModal() {
+  const m = modal(`<h3>التقرير النهائي (PDF)</h3><p class="muted small">يُفتح التقرير ثم اختر «حفظ بصيغة PDF» من نافذة الطباعة.</p>
+    <label class="check"><input type="checkbox" id="rpQ" checked><span>تضمين الأسئلة والإجابات الصحيحة</span></label>
+    <label class="check"><input type="checkbox" id="rpAbs" checked><span>تضمين من لم يشارك</span></label>
+    <label class="check"><input type="checkbox" id="rpInt"><span>تضمين مؤشرات النزاهة <small class="muted">(للأستاذ فقط، لا تشاركه مع الطلاب)</small></span></label>
+    <div class="actions"><button class="btn ghost" data-close>إلغاء</button><button class="btn pri" id="rpGo">إنشاء التقرير</button></div>`);
+  $('#rpGo', m).onclick = async () => {
+    const opts = { questions: $('#rpQ', m).checked, absent: $('#rpAbs', m).checked, integrity: $('#rpInt', m).checked };
+    closeModal(); await autoGrade(); buildReport(opts);
+  };
+}
+function buildReport(opts) {
+  const M = S.mon, q = M.quiz, key = M.key || {};
+  let rows = reportRows(q, M.atts);
+  if (!opts.absent) rows = rows.filter(r => r.a);
+  const fin = rows.filter(r => r.score != null).map(r => r.score);
+  const avg = fin.length ? fin.reduce((s, v) => s + v, 0) / fin.length : null;
+  const now = Date.now();
+  const flagsTxt = a => { if (!a) return ''; const c = a.counters || {}; const p = []; if (c.paste || c.drop || c.bulk) p.push('لصق ' + ((c.paste || 0) + (c.drop || 0) + (c.bulk || 0))); if (c.leave) p.push(`خروج ${c.leave} (${secs(c.awayMs)})`); if (c.print) p.push('لقطة شاشة ' + c.print); if (c.copy || c.cut) p.push('نسخ ' + ((c.copy || 0) + (c.cut || 0))); return p.join('، ') || '—'; };
+  $('#print-root').innerHTML = `<div class="rp-tool"><button class="btn pri" id="rpPrint">طباعة / حفظ PDF</button><button class="btn" id="rpClose">إغلاق</button></div>
+  <div class="rp">
+    <div class="rp-brand">${APP.name} — ${APP.tagline}</div>
+    <h1>${esc(q.title)}</h1>
+    <div class="rp-meta">${esc(q.groupName || '')}${q.groupName ? ' · ' : ''}${dayHijri(now)} (${dayGreg(now)}) · الدرجة الكلية: ${fmtNum(q.maxScore)}</div>
+    <div class="rp-stats"><span>المشاركون: <b>${M.atts.length}</b></span><span>المتوسط: <b>${avg != null ? fmtNum(avg) : '—'}</b></span><span>الأعلى: <b>${fin.length ? fmtNum(Math.max(...fin)) : '—'}</b></span><span>الأدنى: <b>${fin.length ? fmtNum(Math.min(...fin)) : '—'}</b></span></div>
+    <h2>الدرجات</h2>
+    <table><thead><tr><th class="num">م</th><th class="num">الرقم الجامعي</th><th>الاسم</th><th class="num">الدرجة من ${fmtNum(q.maxScore)}</th><th>الحالة</th>${opts.integrity ? '<th>مؤشرات النزاهة</th>' : ''}</tr></thead>
+    <tbody>${rows.map((r, i) => `<tr><td class="num">${i + 1}</td><td class="num">${esc(r.sid || '')}</td><td>${esc(r.name)}</td><td class="num"><b>${r.score != null ? fmtNum(r.score) : '—'}</b></td><td>${r.status}</td>${opts.integrity ? `<td>${flagsTxt(r.a)}</td>` : ''}</tr>`).join('')}</tbody></table>
+    ${opts.questions ? `<h2>الأسئلة والإجابات الصحيحة</h2>${keyHTML(q, key, true)}` : ''}
+    <div class="rp-foot">أُعدّ بمنصة ${APP.name} · تطوير: ${esc(APP.dev)}</div>
+  </div>`;
+  document.body.classList.add('printing'); scrollTo(0, 0);
+  $('#rpPrint').onclick = () => window.print();
+  $('#rpClose').onclick = () => { document.body.classList.remove('printing'); $('#print-root').innerHTML = ''; };
+  setTimeout(() => window.print(), 400);
+}
+function exportCSV() {
+  const M = S.mon, q = M.quiz;
+  const head = ['م', 'الرقم الجامعي', 'الاسم', 'الحالة', 'الدرجة', 'من', 'البدء', 'التسليم', 'المدة (دقيقة)', 'محاولات لصق', 'مرات الخروج', 'مدة الخروج (ثانية)', 'لقطة شاشة', 'محاولات نسخ', 'الجهاز', 'IP'];
+  const rows = reportRows(q, M.atts).map((r, i) => { const a = r.a, c = a?.counters || {}, d = a ? attDuration(a) : null; return [i + 1, r.sid || '', r.name, r.status, r.score ?? '', q.maxScore, a ? clock(toMs(a.startedAt)) : '', a ? clock(toMs(a.submittedAt)) : '', d != null ? Math.round(d / 6000) / 10 : '', a ? (c.paste || 0) + (c.drop || 0) + (c.bulk || 0) : '', a ? c.leave || 0 : '', a ? Math.round((c.awayMs || 0) / 1000) : '', a ? c.print || 0 : '', a ? (c.copy || 0) + (c.cut || 0) : '', a?.device || '', a?.ip || '']; });
+  const csv = '﻿' + [head, ...rows].map(r => r.map(v => `"${String(v ?? '').replace(/"/g, '""')}"`).join(',')).join('\r\n');
+  download(csv, `${q.title} - ${q.groupName || 'درجات'}.csv`.replace(/[\\/:*?"<>|]/g, '-'), 'text/csv;charset=utf-8');
+}
+function projector() {
+  const q = S.mon?.quiz; if (!q) return;
+  const link = studentLink();
+  const root = $('#modal-root');
+  root.innerHTML = `<div class="proj"><button class="btn proj-x" data-close>إغلاق ✕</button>
+    <div class="brand"><div class="logo">م</div><div style="text-align:start"><b>${APP.name}</b><small>${APP.tagline}</small></div></div>
+    <div class="proj-title">${esc(q.title)}</div>
+    <div class="proj-grid"><div class="proj-qr" id="projQR"></div>
+      <div class="proj-steps"><div>١) امسح الرمز بكاميرا الجوال</div><div>٢) أدخل رمز الدخول:</div><div class="proj-pin">${esc(q.pin)}</div><div>٣) اختر اسمك وابدأ</div></div></div>
+    <div class="proj-link">${esc(link)}</div>
+    <button class="btn sm ghost" id="fsBtn">ملء الشاشة</button></div>`;
+  root.querySelector('[data-close]').onclick = () => { if (document.fullscreenElement) document.exitFullscreen?.(); root.innerHTML = ''; };
+  $('#fsBtn').onclick = () => root.firstElementChild.requestFullscreen?.();
+  renderQR($('#projQR'), link, Math.min(340, Math.round(innerWidth * .38)));
+}
+
+/* =========================================================
+   الأحداث العامة (النقر)
+   ========================================================= */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-act]'); if (!b) return;
+  const act = b.dataset.act, id = b.dataset.id;
+  const findQ = () => S.adm.quizzes.find(q => q.id === id) || (S.mon?.quiz?.id === id ? S.mon.quiz : null);
+  switch (act) {
+    // الطالب
+    case 'pin-go': return enterPin($('#pin')?.value || '');
+    case 'mine': return openMine(b.dataset.q);
+    case 'back-landing': return renderLanding();
+    case 'not-my-id': return renderIdStep(' ');
+    case 'req-ok': { const r = (S.adm.requests || []).find(x => x.sid + '_' + x.uid === id); if (r) busy(async () => { await S.db.approveRequest(r); toast('سُمح للطالب بالدخول من الجهاز الجديد', 'ok'); }); return; }
+    case 'req-no': { const r = (S.adm.requests || []).find(x => x.sid + '_' + x.uid === id); if (r) busy(async () => { await S.db.rejectRequest(r); toast('رُفض الطلب', 'ok'); }); return; }
+    case 'start': return startQuiz();
+    case 'pick': if (!inQuiz()) return; S.answers[b.dataset.q] = b.dataset.v; return changed(b.dataset.q);
+    case 'tf': if (!inQuiz()) return; S.answers[b.dataset.q] = b.dataset.v === 'true'; return changed(b.dataset.q);
+    case 'match': if (!inQuiz()) return; { const cur = { ...(S.answers[b.dataset.q] || {}) }; cur[b.dataset.i] = b.dataset.v; S.answers[b.dataset.q] = cur; } return changed(b.dataset.q);
+    case 'submit': return submitFlow(false);
+    // عام
+    case 'teacher': location.hash = 'admin'; return;
+    case 'student-page': location.hash = ''; if (!location.hash) location.reload(); return;
+    case 'try-demo': lsSet('mrn_demo', 1); location.reload(); return;
+    case 'exit-demo': lsDel('mrn_demo'); location.reload(); return;
+    case 'save-cfg': { const c = parseConfigText($('#cfgText')?.value); if (!c) return toast('لم أجد apiKey و projectId في النص الملصوق', 'danger', 5000); lsSet('mrn_cfg', c); lsDel('mrn_demo'); toast('حُفظت الإعدادات', 'ok'); setTimeout(() => location.reload(), 500); return; }
+    case 'clear-cfg': if (await confirmBox('مسح إعدادات الاتصال', 'ستُمسح إعدادات فايربيز من هذا المتصفح فقط، ولا يُحذف شيء من قاعدة البيانات.', 'مسح', true)) { lsDel('mrn_cfg'); location.reload(); } return;
+    case 'copy': { const el = $(b.dataset.sel); if (el) copyText(el.value ?? el.textContent); return; }
+    case 'dl-template': return download(JSON.stringify(TEMPLATE, null, 2), 'نموذج-ملف-أسئلة.json', 'application/json');
+    // الأستاذ
+    case 'login': return doLogin();
+    case 'logout': await busy(() => S.db.teacherLogout()); return;
+    case 'tab': S.adm.tab = b.dataset.tab; S.adm.view = 'home'; stopMonitor(); return renderAdmin();
+    case 'platform': return setPlatform(b.dataset.open === '1');
+    case 'seed-demo': return seedDemo();
+    case 'new-quiz': if (!S.adm.groups.length && !(await confirmBox('لا توجد مواد بعد', 'يمكنك إنشاء نموذج بلا قائمة أسماء (يكتب الطالب اسمه)، أو إضافة مادة وأسماء طلابها أولاً من تبويب «المواد والطلاب».', 'متابعة بلا قائمة'))) return; return quizModal(null);
+    case 'edit-quiz': { const q = findQ(); if (q) quizModal(q); return; }
+    case 'open-quiz': { const q = findQ(); if (q) setQuizOpen(q, true); return; }
+    case 'close-quiz': { const q = findQ(); if (q) setQuizOpen(q, false); return; }
+    case 'copy-quiz': { const q = findQ(); if (q) copyQuiz(q); return; }
+    case 'del-quiz': { const q = findQ(); if (q && await confirmBox('حذف النموذج', `سيُحذف «${esc(q.title)}» مع كل الإجابات والدرجات نهائياً.`, 'حذف نهائي', true)) busy(async () => { await S.db.deleteQuiz(q.id); toast('حُذف النموذج', 'ok'); }); return; }
+    case 'monitor': return openMonitor(id);
+    case 'mon-back': stopMonitor(); S.adm.view = 'home'; return renderAdmin();
+    case 'new-course': return courseModal(null);
+    case 'edit-course': { const g = S.adm.groups.find(x => x.id === id); if (g) courseModal(g); return; }
+    case 'course-close': { const g = S.adm.groups.find(x => x.id === id); if (g) setCourseClosed(g, b.dataset.closed === '1'); return; }
+    case 'del-course': { const g = S.adm.groups.find(x => x.id === id); if (g && await confirmBox('حذف المادة', `ستُحذف «${esc(g.name)}» وقائمة أسمائها. النماذج المرتبطة بها تبقى بنتائجها.`, 'حذف', true)) busy(async () => { await S.db.deleteGroup(g.id); toast('حُذفت المادة', 'ok'); }); return; }
+    case 'toggle': return toggleQuizFlag(b.dataset.k);
+    case 'toggle-absent': if (S.mon) { S.mon.showAbsent = !S.mon.showAbsent; renderMonitor(); } return;
+    case 'proj': return projector();
+    case 'report': return reportModal();
+    case 'csv': return exportCSV();
+    case 'key-view': { const M = S.mon; if (M?.quiz) modal(`<h3>الأسئلة والإجابات الصحيحة</h3>${keyHTML(M.quiz, M.key || {})}<div class="actions"><button class="btn" data-close>إغلاق</button></div>`, { wide: true }); return; }
+    case 'att': { const a = S.mon?.atts.find(x => x.id === id); if (a) attemptModal(a); return; }
+  }
+});
+
+boot();
+</script>
+</body>
+</html>
